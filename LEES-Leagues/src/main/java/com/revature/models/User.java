@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.io.Serializable;
 import java.sql.Array;
 import java.util.Objects;
 
@@ -15,7 +16,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="User")
-public class User {
+public class User implements Serializable {
+
+	private static final long serialVersionUID = -2876406125041740590L;
 
 	@Id
 	@Column(name="user_id")

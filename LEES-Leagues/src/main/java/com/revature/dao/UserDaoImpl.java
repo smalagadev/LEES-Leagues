@@ -22,7 +22,7 @@ public class UserDaoImpl implements UserDao {
 		
 		try (Connection conn = ConnectionUtil.getConnection()) {
 			
-			String sql = "SELECT * FROM project1.users WHERE username = ?;";
+			String sql = "SELECT * FROM project1.users WHERE username = ? AND password = ?;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
