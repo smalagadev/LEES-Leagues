@@ -9,7 +9,7 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://project-2.cdjsh9pz2y2a.us-east-1.rds.amazonaws.com:5432/supervillains</property>
 		<!-- <property name="hibernate.connection.driver_class">org.postgresql.Driver</property> -->
 		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">false</property>
 		
 		<property name="hibernate.connection.pool_size">10</property>

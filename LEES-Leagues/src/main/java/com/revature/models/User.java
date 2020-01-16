@@ -1,6 +1,6 @@
 package com.revature.models;
 
-import java.util.List;
+import java.sql.Array;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -12,8 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
-import com.revature.model.Crimes;
 
 @Entity
 @Table(name="User")
@@ -40,24 +38,32 @@ public class User {
 	private String email;
 	
 	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Team> team;
+	private Array teamId;
 
 	public User() {
 		super();
 	}
 	
-	public User(String firstName, String lastName, String username, String password, String email, List<Team> team) {
+	public User(String firstName, String lastName, String username, String password, String email) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.team = team;
 	}
 
-	public User(int userId, String firstName, String lastName, String username, String password, String email,
-			List<Team> team) {
+	public User(String firstName, String lastName, String username, String password, String email, Array teamId) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.teamId = teamId;
+	}
+
+	public User(int userId, String firstName, String lastName, String username, String password, String email, Array teamId) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -65,7 +71,7 @@ public class User {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.team = team;
+		this.teamId = teamId;
 	}
 
 	public int getUserId() {
@@ -116,17 +122,17 @@ public class User {
 		this.email = email;
 	}
 
-	public List<Team> getTeam() {
-		return team;
+	public Array getTeamId() {
+		return teamId;
 	}
 
-	public void setTeam(List<Team> team) {
-		this.team = team;
+	public void setTeamId(Array teamId) {
+		this.teamId = teamId;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, firstName, lastName, password, team, userId, username);
+		return Objects.hash(email, firstName, lastName, password, teamId, userId, username);
 	}
 
 	@Override
@@ -140,14 +146,14 @@ public class User {
 		User other = (User) obj;
 		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
-				&& Objects.equals(team, other.team) && userId == other.userId
+				&& Objects.equals(teamId, other.teamId) && userId == other.userId
 				&& Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
-				+ username + ", password=" + password + ", email=" + email + ", team=" + team + "]";
+				+ username + ", password=" + password + ", email=" + email + ", teamId=" + teamId + "]";
 	}
 	
 }
