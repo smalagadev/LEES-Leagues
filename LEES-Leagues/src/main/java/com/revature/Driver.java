@@ -14,7 +14,7 @@ public class Driver {
 		
 		public static void initialValues() {
 			
-			User u1 = new User("Larry", "Ross", "lmr608", "password", "lross@revature.com");
+			User u1 = new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com");
 			User u2 = new User("Stefanno", "Malaga", "smalagadev", "password", "smalaga@revature.com");
 			User u3 = new User("Elijah", "Jefferson", "jeffersone9", "password", "ejefferson@revature.com");
 			User u4 = new User("Enrique", "Hunt", "mrhunt715", "password", "ehunt@revature.com");
