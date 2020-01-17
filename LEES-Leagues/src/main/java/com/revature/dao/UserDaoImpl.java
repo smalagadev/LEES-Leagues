@@ -1,6 +1,5 @@
 package com.revature.dao;
 
-import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 		
 		try (Connection conn = ConnectionUtil.getConnection()) {
 			
-			String sql = "SELECT * FROM project1.users WHERE username = ? AND password = ?;";
+			String sql = "SELECT * FROM lees-leagues.users WHERE username = ? AND password = ?;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, username);
 			stmt.setString(2, password);
@@ -35,9 +34,8 @@ public class UserDaoImpl implements UserDao {
 				String uusername = rs.getString("username");
 				String upassword = rs.getString("password");
 				String uemail = rs.getString("email");
-				Array uteam_id = rs.getArray("team_id");
 				
-				User u = new User(uid, ufirst_name, ulast_name, uusername, upassword, uemail, uteam_id);
+				User u = new User(uid, ufirst_name, ulast_name, uusername, upassword, uemail);
 				return u;
 			}
 			rs.close();
@@ -53,7 +51,7 @@ public class UserDaoImpl implements UserDao {
 
 		try (Connection conn = ConnectionUtil.getConnection()) {
 			
-			String sql = "SELECT * FROM project1.users WHERE username = ? AND password = ?;";
+			String sql = "SELECT * FROM lees-leagues.user WHERE username = ? AND password = ?;";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setString(1, username);
 			ResultSet rs = stmt.executeQuery();
@@ -65,9 +63,8 @@ public class UserDaoImpl implements UserDao {
 				String uusername = rs.getString("username");
 				String upassword = rs.getString("password");
 				String uemail = rs.getString("email");
-				Array uteam_id = rs.getArray("team_id");
 				
-				User u = new User(uid, ufirst_name, ulast_name, uusername, upassword, uemail, uteam_id);
+				User u = new User(uid, ufirst_name, ulast_name, uusername, upassword, uemail);
 				return u;
 			}
 			rs.close();

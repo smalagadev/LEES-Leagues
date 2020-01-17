@@ -1,10 +1,14 @@
 package com.revature.models;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +25,10 @@ public class Team implements Serializable {
 
 	@Column(name="team_name", nullable=false, unique=true)
 	private String name;
+	
+	
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<User> users;
 
 	public Team() {
 		super();
@@ -37,6 +45,14 @@ public class Team implements Serializable {
 		this.teamId = teamId;
 		this.location = location;
 		this.name = name;
+	}
+	
+	public Team(int teamId, String location, String name, List<User> users) {
+		super();
+		this.teamId = teamId;
+		this.location = location;
+		this.name = name;
+		this.users = users;
 	}
 
 	public int getTeamId() {
@@ -62,10 +78,18 @@ public class Team implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(location, name, teamId);
+		return Objects.hash(location, name, teamId, users);
 	}
 
 	@Override
@@ -77,12 +101,13 @@ public class Team implements Serializable {
 			return false;
 		}
 		Team other = (Team) obj;
-		return Objects.equals(location, other.location) && Objects.equals(name, other.name) && teamId == other.teamId;
+		return Objects.equals(location, other.location) && Objects.equals(name, other.name) && teamId == other.teamId
+				&& Objects.equals(users, other.users);
 	}
 
 	@Override
 	public String toString() {
-		return "Team [teamId=" + teamId + ", location=" + location + ", name=" + name + "]";
+		return "Team [teamId=" + teamId + ", location=" + location + ", name=" + name + ", users=" + users + "]";
 	}
 
 }

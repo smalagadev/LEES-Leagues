@@ -1,17 +1,13 @@
 package com.revature.models;
 
 import java.io.Serializable;
-import java.sql.Array;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -40,9 +36,6 @@ public class User implements Serializable {
 	@Column(name="email", nullable=false, unique=true)
 	private String email;
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private Array teamId;
-
 	public User() {
 		super();
 	}
@@ -56,17 +49,7 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public User(String firstName, String lastName, String username, String password, String email, Array teamId) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.teamId = teamId;
-	}
-
-	public User(int userId, String firstName, String lastName, String username, String password, String email, Array teamId) {
+	public User(int userId, String firstName, String lastName, String username, String password, String email) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -74,7 +57,6 @@ public class User implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.teamId = teamId;
 	}
 
 	public int getUserId() {
@@ -125,17 +107,9 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public Array getTeamId() {
-		return teamId;
-	}
-
-	public void setTeamId(Array teamId) {
-		this.teamId = teamId;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, firstName, lastName, password, teamId, userId, username);
+		return Objects.hash(email, firstName, lastName, password, userId, username);
 	}
 
 	@Override
@@ -149,14 +123,13 @@ public class User implements Serializable {
 		User other = (User) obj;
 		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName)
 				&& Objects.equals(lastName, other.lastName) && Objects.equals(password, other.password)
-				&& Objects.equals(teamId, other.teamId) && userId == other.userId
-				&& Objects.equals(username, other.username);
+				&& userId == other.userId && Objects.equals(username, other.username);
 	}
 
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", username="
-				+ username + ", password=" + password + ", email=" + email + ", teamId=" + teamId + "]";
+				+ username + ", password=" + password + ", email=" + email + "]";
 	}
 	
 }
