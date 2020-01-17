@@ -7,11 +7,8 @@ import {FormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
-import { RegisterComponent } from './register/register.component';
-import { ComponentsComponent } from './src/app/components/components.component';
-import { NavbarComponent } from './src/app/components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
 import { TeamComponent } from './components/team/team.component';
@@ -25,9 +22,6 @@ import { SettingsComponent } from './components/settings/settings.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    UserComponent,
-    RegisterComponent,
-    ComponentsComponent,
     NavbarComponent,
     LoginFormComponent,
     RegistrationFormComponent,
