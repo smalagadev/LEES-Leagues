@@ -18,6 +18,8 @@ import { TeamComponent } from './components/team/team.component';
 import { LeagueComponent } from './components/league/league.component';
 import { TeamSearchComponent } from './components/team-search/team-search.component';
 import { LeagueSearchComponent } from './components/league-search/league-search.component';
+import { HomeComponent } from './components/home/home.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { LeagueSearchComponent } from './components/league-search/league-search.
     TeamComponent,
     LeagueComponent,
     TeamSearchComponent,
-    LeagueSearchComponent
+    LeagueSearchComponent,
+    HomeComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
