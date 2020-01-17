@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-login-form',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
+  username : string;
+  password : string;
+
+  login() : void{
+
+  if(this.username == 'admin'&& this.password == 'password'){
+    this.router.navigate(["user"]);
+  }else{
+    alert("credentials are invalid");
+  }
+}
 }
