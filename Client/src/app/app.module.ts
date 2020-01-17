@@ -14,6 +14,10 @@ import { ComponentsComponent } from './src/app/components/components.component';
 import { NavbarComponent } from './src/app/components/navbar/navbar.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { TeamComponent } from './components/team/team.component';
+import { LeagueComponent } from './components/league/league.component';
+import { TeamSearchComponent } from './components/team-search/team-search.component';
+import { LeagueSearchComponent } from './components/league-search/league-search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { RegistrationFormComponent } from './components/registration-form/regist
     ComponentsComponent,
     NavbarComponent,
     LoginFormComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    TeamComponent,
+    LeagueComponent,
+    TeamSearchComponent,
+    LeagueSearchComponent
   ],
   imports: [
     BrowserModule,
