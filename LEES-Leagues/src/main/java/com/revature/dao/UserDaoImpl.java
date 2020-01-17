@@ -77,14 +77,12 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void insert(User user) {
-
-		Session ses = HibernateUtil.getSession();
-		Transaction tx = ses.beginTransaction();
-		
-		ses.save(user);
-		tx.commit();
-		ses.close();
-		
+		/*
+		 * Session ses = HibernateUtil.getSession(); Transaction tx =
+		 * ses.beginTransaction();
+		 * 
+		 * ses.save(user); tx.commit(); ses.close();
+		 */
 	}
 
 }

@@ -11,7 +11,7 @@ public class Driver {
 
 	public static void main(String[] args) {
 
-		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+		//ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		initialValues();
 		
