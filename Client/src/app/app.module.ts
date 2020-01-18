@@ -17,6 +17,7 @@ import { TeamSearchComponent } from './components/team-search/team-search.compon
 import { LeagueSearchComponent } from './components/league-search/league-search.component';
 import { HomeComponent } from './components/home/home.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { EditTeamsComponent } from './components/edit-teams/edit-teams.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     TeamSearchComponent,
     LeagueSearchComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
+    EditTeamsComponent
   ],
   imports: [
     BrowserModule,
