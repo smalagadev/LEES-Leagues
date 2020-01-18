@@ -27,16 +27,16 @@ public class UserDaoImpl implements UserDao {
 	private static Logger logger = Logger.getLogger(UserDaoImpl.class);
 
 	@Override
-	public boolean login(String username, String password) {
+	public User login(String username, String password) {
 		User user = getByusername(username);
 		if(user == null) {
-			return false;
+			return null;
 		}
 		
 		if(!user.getPassword().equals(password)) {
-			return false;
+			return null;
 		}
-		return true;
+		return user;
 	}
 
 	@Override
@@ -54,11 +54,12 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	@Transactional
-	public void insert(User user) {
+	public boolean insert(User user) {
 		Session s = sf.getCurrentSession();
 		Transaction transaction = s.beginTransaction();
 		s.save(user);
-		transaction.commit();		
+		transaction.commit();	
+		return true;
 	}
 
 	@Override
@@ -92,11 +93,12 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	@Transactional
-	public void update(User user) {
+	public boolean update(User user) {
 		Session s = sf.getCurrentSession();
 		Transaction transaction = s.beginTransaction();
 		s.update(user);
 		transaction.commit();
+		return true;
 		
 	}
 	
