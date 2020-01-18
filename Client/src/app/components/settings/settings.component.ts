@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { EditTeamsComponent } from './../components/edit-teams/edit-teams.component';
 
 @Component({
   selector: 'app-settings',
