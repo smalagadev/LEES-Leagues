@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatDialog} from '@angular/material';
+
+
 
 @Component({
   selector: 'app-login-form',
@@ -8,8 +9,13 @@ import {MatDialog} from '@angular/material';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
+  currentUser: any;
 
   constructor(private router: Router) { }
+
+  Register(){
+
+  }
 
   ngOnInit() {
   }
@@ -17,12 +23,13 @@ export class LoginFormComponent implements OnInit {
   username : string;
   password : string;
 
-  login() : void{
-
-  if(this.username == 'admin'&& this.password == 'password'){
-    this.router.navigate(["user"]);
-  }else{
-    alert("credentials are invalid");
+  sendLogin() {
+    this.currentUser.login(this.username, this.password).subscribe(
+      (response: "") => {
+        sessionStorage.setItem('currentUser', JSON.stringify(response));
+        console.log(response);
+        this.router.navigate(['/']);
+      }
+    )
   }
-}
 }
