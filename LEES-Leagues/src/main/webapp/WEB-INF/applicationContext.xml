@@ -20,24 +20,24 @@
 		<property name="url" value="lees-leagues.cdjsh9pz2y2a.us-east-1.rds.amazonaws.com:5432/lees_leagues"/>
 		<property name="username" value="lees"/>
 		<property name="password" value="password"/>
-		<property name="driverClassName" value="org.posgtresql.Driver"/>
-		<property name="hibernate.default_schema" value="public"/>
+		<property name="driverClassName" value="org.postgresql.Driver"/>
 	</bean>
 	
-	<bean name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="ourDataSource"/>
 		<property name="packagesToScan" value="com.revature"/>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
-				<prop key="show_sql">false</prop>
+				<prop key="show_sql">true</prop>
 				<prop key="hibernate.hbm2dll.auto">update</prop>
+				<prop key="hibernate.default_schema">public</prop>
 			</props>
 		</property>
 	</bean>
 	
 	<bean name="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		
 		<property name="sessionFactory" ref="sessionFactory"/>
 		<property name="nestedTransactionAllowed" value="true"/>
