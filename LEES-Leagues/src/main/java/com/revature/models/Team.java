@@ -11,8 +11,11 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="Team")
+@Component
 public class Team implements Serializable {
 
 	private static final long serialVersionUID = -8461232721724337259L;
@@ -26,7 +29,7 @@ public class Team implements Serializable {
 	@Column(name="team_name", nullable=false, unique=true)
 	private String name;
 	
-	
+	@Column
 	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<User> users;
 

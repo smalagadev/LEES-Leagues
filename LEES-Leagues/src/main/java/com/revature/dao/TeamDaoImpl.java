@@ -7,99 +7,50 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.apache.log4j.Logger;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
 
 import com.revature.models.Team;
-import com.revature.util.ConnectionUtil;
+import com.revature.models.User;
 
 public class TeamDaoImpl implements TeamDao {
-
-	private static Logger logger = Logger.getLogger(TeamDaoImpl.class);
 	
+	@Autowired
+	private SessionFactory sf;
+	
+	@SuppressWarnings({"deprecation", "unchecked"})
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public List<Team> getAllTeams() {
-		List<Team> allTeams = new ArrayList<>();
-		try (Connection conn = ConnectionUtil.getConnection()) {
-			
-			String sql = "SELECT * FROM lees-leagues.team;";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			int i = 1;
-			
-			while(rs.next()) {
-				int teamId = rs.getInt("team_id");
-				String location = rs.getString("team_location");
-				String name = rs.getString("team_name");
-				
-				Team team = new Team(teamId, location, name);
-				allTeams.add(i, team);
-				i++;
-			}
-
-		} catch (SQLException e) {
-			logger.warn("Unable to get all Teams", e);
-			e.printStackTrace();
-		}
-		return allTeams;
+		
+		Session s = sf.getCurrentSession();
+		return (List<Team>) s.createCriteria(Team.class).list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Team> getByTeamId(int id) {
-
-		List<Team> Team = new ArrayList<>();
-		try (Connection conn = ConnectionUtil.getConnection()) {
-			
-			String sql = "SELECT * FROM lees-leagues.team WHERE team_id = ?;";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			int i = 1;
-			
-			while(rs.next()) {
-				int teamId = rs.getInt("team_id");
-				String location = rs.getString("team_location");
-				String name = rs.getString("team_name");
-				
-				Team team = new Team(teamId, location, name);
-				Team.add(i, team);
-				i++;
-			}
-
-		} catch (SQLException e) {
-			logger.warn("Unable to get team from ID", e);
-			e.printStackTrace();
-		}
-		return Team;
+		Session s = sf.getCurrentSession();
+		return (List<Team>) s.get(Team.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Team> getByUserId(int id) {
-		
-		List<Team> userTeams = new ArrayList<>();
-		try (Connection conn = ConnectionUtil.getConnection()) {
-			
-			String sql = "SELECT * FROM lees-leagues.team WHERE user_id = ?;";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, id);
-			ResultSet rs = pstmt.executeQuery();
-			int i = 1;
-			
-			while(rs.next()) {
-				int teamId = rs.getInt("team_id");
-				String location = rs.getString("team_location");
-				String name = rs.getString("team_name");
-				
-				Team team = new Team(teamId, location, name);
-				userTeams.add(i, team);
-				i++;
-			}
-
-		} catch (SQLException e) {
-			logger.warn("Unable to get Teams from User", e);
-			e.printStackTrace();
-		}
-		return userTeams;
+		Session s = sf.getCurrentSession();
+		return (List<Team>) s.get(User.class, id);
+	}
 	
+	@Override
+	@Transactional
+	public void save(Team t) {
+		Session s = sf.getCurrentSession();
+		s.save(t);
 	}
 	
 }

@@ -1,11 +1,16 @@
 package com.revature.dao;
 
+import java.util.List;
+
 import com.revature.models.User;
 
 public interface UserDao {
 
-	public User login(String username, String password);
-	public User getByusername(String username);
-	public void insert(User user);
+	public List<User> findAll();
+	public User Login(String Username, String password);
+	public User getByUsername(String username);
+	public User getById(int id);
+	public void save(User user);
+	public void update(User user);
 	
 }

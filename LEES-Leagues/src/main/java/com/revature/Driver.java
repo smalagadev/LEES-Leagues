@@ -11,25 +11,16 @@ public class Driver {
 
 	public static void main(String[] args) {
 
-		//ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
-		initialValues();
-		
+		UserDaoImpl dao = (UserDaoImpl) ac.getBean("userDao");
+				
+		dao.save(new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com"));
+		dao.save(new User("Stefanno", "Malaga", "smalagadev", "password", "smalaga@revature.com"));
+		dao.save(new User("Elijah", "Jefferson", "jeffersone9", "password", "ejefferson@revature.com"));
+		dao.save(new User("Enrique", "Hunt", "mrhunt715", "password", "ehunt@revature.com"));
+	
+		System.out.println(dao.findByUsername("lmr608"));
 	}
-		
-		public static void initialValues() {
-			
-			User u1 = new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com");
-			User u2 = new User("Stefanno", "Malaga", "smalagadev", "password", "smalaga@revature.com");
-			User u3 = new User("Elijah", "Jefferson", "jeffersone9", "password", "ejefferson@revature.com");
-			User u4 = new User("Enrique", "Hunt", "mrhunt715", "password", "ehunt@revature.com");
-			
-			UserDao udao = new UserDaoImpl();
-			udao.insert(u1);
-			udao.insert(u2);
-			udao.insert(u3);
-			udao.insert(u4);
-			
-		}
 
 }

@@ -1,17 +1,25 @@
 package com.revature.models;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name="User")
+@Component
 public class User implements Serializable {
 
 	private static final long serialVersionUID = -2876406125041740590L;
@@ -36,6 +44,13 @@ public class User implements Serializable {
 	@Column(name="email", nullable=false, unique=true)
 	private String email;
 	
+	@Column
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="favorite_teams",
+				joinColumns= {@JoinColumn(name="user_id", referencedColumnName="user_id")},
+				inverseJoinColumns= {@JoinColumn(name="team_id", referencedColumnName="team_id")})
+	private List<Team> teams;
+	
 	public User() {
 		super();
 	}
@@ -57,6 +72,18 @@ public class User implements Serializable {
 		this.username = username;
 		this.password = password;
 		this.email = email;
+	}
+
+	public User(int userId, String firstName, String lastName, String username, String password, String email,
+			List<com.revature.models.Team> teams) {
+		super();
+		this.userId = userId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.teams = teams;
 	}
 
 	public int getUserId() {

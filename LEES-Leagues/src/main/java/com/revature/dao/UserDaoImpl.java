@@ -4,85 +4,64 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 
 import com.revature.models.User;
-import com.revature.util.ConnectionUtil;
-import com.revature.util.HibernateUtil;
 
+@Repository
 public class UserDaoImpl implements UserDao {
-
-	private static Logger logger = Logger.getLogger(UserDaoImpl.class);
+	
+	@Autowired
+	private SessionFactory sf;
+	
+	@SuppressWarnings({"deprecation", "unchecked"})
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<User> findAll() {
+		Session s = sf.getCurrentSession();
+		return (List<User>) s.createCriteria(User.class).list();
+	}
 	
 	@Override
-	public User login(String username, String password) {
-		
-		try (Connection conn = ConnectionUtil.getConnection()) {
-			
-			String sql = "SELECT * FROM lees-leagues.users WHERE username = ? AND password = ?;";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, username);
-			stmt.setString(2, password);
-			ResultSet rs = stmt.executeQuery();
-			
-			while (rs.next()) {
-				int uid = rs.getInt("user_id");
-				String ufirst_name = rs.getString("first_name");
-				String ulast_name = rs.getString("last_name");
-				String uusername = rs.getString("username");
-				String upassword = rs.getString("password");
-				String uemail = rs.getString("email");
-				
-				User u = new User(uid, ufirst_name, ulast_name, uusername, upassword, uemail);
-				return u;
-			}
-			rs.close();
-		} catch (SQLException e) {
-			logger.warn("Unable to get User from database", e);
-			e.printStackTrace();
-		}
+	public User Login(String Username, String password) {
 		return null;
 	}
 	
 	@Override
-	public User getByusername(String username) {
-
-		try (Connection conn = ConnectionUtil.getConnection()) {
-			
-			String sql = "SELECT * FROM lees-leagues.user WHERE username = ? AND password = ?;";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setString(1, username);
-			ResultSet rs = stmt.executeQuery();
-			
-			while (rs.next()) {
-				int uid = rs.getInt("user_id");
-				String ufirst_name = rs.getString("first_name");
-				String ulast_name = rs.getString("last_name");
-				String uusername = rs.getString("username");
-				String upassword = rs.getString("password");
-				String uemail = rs.getString("email");
-				
-				User u = new User(uid, ufirst_name, ulast_name, uusername, upassword, uemail);
-				return u;
-			}
-			rs.close();
-		} catch (SQLException e) {
-			logger.warn("Unable to get User from database", e);
-			e.printStackTrace();
-		}
-		return null;
+	@Transactional
+	public User getByUsername(String username) {
+		Session s = sf.getCurrentSession();
+		return s.get(User.class, username);
+	}
+	
+	@Override
+	@Transactional
+	public User getById(int id) {
+		Session s = sf.getCurrentSession();
+		return s.get(User.class, id);
 	}
 
 	@Override
-	public void insert(User user) {
-		/*
-		 * Session ses = HibernateUtil.getSession(); Transaction tx =
-		 * ses.beginTransaction();
-		 * 
-		 * ses.save(user); tx.commit(); ses.close();
-		 */
+	@Transactional
+	public void save(User u) {
+		Session s = sf.getCurrentSession();
+		s.save(u);
+	}
+	
+	@Override
+	@Transactional
+	public void update(User u) {
+		Session s = sf.getCurrentSession();
+		s.update(u);
 	}
 
 }
