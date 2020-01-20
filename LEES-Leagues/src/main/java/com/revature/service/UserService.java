@@ -1,9 +1,33 @@
 package com.revature.service;
 
-import com.revature.models.Team;
+import java.util.List;
+
+import com.revature.dao.UserDao;
+import com.revature.dao.UserDaoImpl;
+import com.revature.models.User;
 
 public class UserService {
 	
+	private static UserDao udao = new UserDaoImpl();
 	
+	public UserService() {
+		
+	}
+	
+	public static List<User> findAll() {
+		return udao.findAll();
+	}
+	
+	public static User getById(int id) {
+		return udao.getById(id);
+	}
+	
+	public static User getByUsername(String username) {
+		return udao.getByUsername(username);
+	}
+	
+	public static User login(String username, String password) {
+		return udao.login(username, password);
+	}
 
 }

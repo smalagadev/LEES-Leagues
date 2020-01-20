@@ -9,7 +9,7 @@ public class LoggingAspect {
 
 	private static Logger log = LogManager.getLogger(LoggingAspect.class);
 	
-	@Before("within(com.revature.models.*)")
+	@Before("within(com.revature.services.*)")
 	public void logModelMethods(JoinPoint jp) {
 		log.info(jp.getTarget() + " invoked " + jp.getSignature());
 	}

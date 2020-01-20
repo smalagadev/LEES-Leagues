@@ -1,17 +1,33 @@
 package com.revature.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.revature.dao.TeamDao;
+import com.revature.dao.TeamDaoImpl;
 import com.revature.models.Team;
-import com.revature.models.User;
 
 public class TeamService {
 
+	private TeamDao tdao = new TeamDaoImpl();
+
+	public TeamService() {
+		
+	}
 	
+	public List<Team> getAllTeams() {
+		return tdao.getAllTeams();
+	}
 	
-	public static List<Team> findAll() {
-		return list;
+	public List<Team> getByTeamId(int id) {
+		return tdao.getByTeamId(id);
+	}
+	
+	public List<Team> getByUserId(int id) {
+		return tdao.getByUserId(id);
+	}
+	
+	public void save(Team team) {
+		
 	}
 	
 }

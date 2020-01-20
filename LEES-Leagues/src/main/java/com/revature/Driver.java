@@ -3,7 +3,6 @@ package com.revature;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.revature.dao.UserDao;
 import com.revature.dao.UserDaoImpl;
 import com.revature.models.User;
 
@@ -20,7 +19,7 @@ public class Driver {
 		dao.save(new User("Elijah", "Jefferson", "jeffersone9", "password", "ejefferson@revature.com"));
 		dao.save(new User("Enrique", "Hunt", "mrhunt715", "password", "ehunt@revature.com"));
 	
-		System.out.println(dao.findByUsername("lmr608"));
+		System.out.println(dao.getByUsername("lmr608"));
 	}
 
 }

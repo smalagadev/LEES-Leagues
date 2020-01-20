@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public User Login(String Username, String password) {
+	public User login(String Username, String password) {
 		return null;
 	}
 	

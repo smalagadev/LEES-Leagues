@@ -7,7 +7,7 @@ import com.revature.models.User;
 public interface UserDao {
 
 	public List<User> findAll();
-	public User Login(String Username, String password);
+	public User login(String Username, String password);
 	public User getByUsername(String username);
 	public User getById(int id);
 	public void save(User user);
