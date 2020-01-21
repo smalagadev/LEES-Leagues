@@ -1,6 +1,6 @@
 package com.revature;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -8,8 +8,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.revature.models.Team;
+
 public class TeamDAOTest {
 
+	private static Team team;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
