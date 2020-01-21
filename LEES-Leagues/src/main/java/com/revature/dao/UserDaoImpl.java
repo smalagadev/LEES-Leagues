@@ -1,67 +1,109 @@
 package com.revature.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.List;
 
-import javax.transaction.Transactional;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.revature.models.User;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-	
+
 	@Autowired
 	private SessionFactory sf;
 	
-	@SuppressWarnings({"deprecation", "unchecked"})
+	private static Logger logger = Logger.getLogger(UserDaoImpl.class);
+
 	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public List<User> findAll() {
-		Session s = sf.getCurrentSession();
-		return (List<User>) s.createCriteria(User.class).list();
+	public User login(String username, String password) {
+		User user = getByUsername(username);
+		if(user == null) {
+			return null;
+		}
+		
+		if(!user.getPassword().equals(password)) {
+			return null;
+		}
+		return user;
 	}
-	
-	@Override
-	public User login(String Username, String password) {
-		return null;
-	}
-	
+
+
 	@Override
 	@Transactional
 	public User getByUsername(String username) {
 		Session s = sf.getCurrentSession();
-		return s.get(User.class, username);
+		Transaction transaction = s.beginTransaction();
+		CriteriaBuilder builder = s.getCriteriaBuilder();
+		CriteriaQuery<User> query = builder.createQuery(User.class);
+		Root<User> root = query.from(User.class);
+		query.select(root).where(builder.equal(root.get("username"), username));
+		Query<User> q = s.createQuery(query);
+		transaction.commit();
+		return q.getSingleResult();
+	}
+
+	@Override
+	@Transactional
+	public boolean save(User user) {
+		Session s = sf.getCurrentSession();
+		Transaction transaction = s.beginTransaction();
+		s.save(user);
+		transaction.commit();	
+		return true;
 	}
 	
 	@Override
 	@Transactional
 	public User getById(int id) {
 		Session s = sf.getCurrentSession();
-		return s.get(User.class, id);
+		Transaction transaction = s.beginTransaction();
+		CriteriaBuilder builder = s.getCriteriaBuilder();
+		CriteriaQuery<User> query = builder.createQuery(User.class);
+		Root<User> root = query.from(User.class);
+		query.select(root).where(builder.equal(root.get("user_id"), id));
+		Query<User> q = s.createQuery(query);
+		transaction.commit();
+		return q.getSingleResult();
+	}
+
+	
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<User> findAll() {
+		Session s = sf.getCurrentSession();
+		Transaction transaction  = s.beginTransaction();
+		CriteriaBuilder builder = s.getCriteriaBuilder();
+		CriteriaQuery<User> query = builder.createQuery(User.class);
+		Root<User> root = query.from(User.class);
+		query.select(root);
+		Query<User> q = s.createQuery(query);
+		transaction.commit();
+		return q.getResultList();
 	}
 
 	@Override
 	@Transactional
-	public void save(User u) {
+	public boolean update(User user) {
 		Session s = sf.getCurrentSession();
-		s.save(u);
+		Transaction transaction = s.beginTransaction();
+		s.update(user);
+		transaction.commit();
+		return true;
 	}
 	
-	@Override
-	@Transactional
-	public void update(User u) {
-		Session s = sf.getCurrentSession();
-		s.update(u);
-	}
+
 
 }
