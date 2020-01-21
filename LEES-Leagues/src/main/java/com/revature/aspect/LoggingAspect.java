@@ -1,5 +1,7 @@
 package com.revature.aspect;
 
+
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -9,7 +11,7 @@ public class LoggingAspect {
 
 	private static Logger log = LogManager.getLogger(LoggingAspect.class);
 	
-	@Before("within(com.revature.services.*)")
+	@Before("within(com.revature.service.*)")
 	public void logModelMethods(JoinPoint jp) {
 		log.info(jp.getTarget() + " invoked " + jp.getSignature());
 	}

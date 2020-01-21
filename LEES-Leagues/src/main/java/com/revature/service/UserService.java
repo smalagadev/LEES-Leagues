@@ -29,5 +29,13 @@ public class UserService {
 	public static User login(String username, String password) {
 		return udao.login(username, password);
 	}
+	
+	public static boolean save(User u) {
+		return udao.save(u);
+	}
+	
+	public static boolean update(User u) {
+		return udao.update(u);
+	}
 
 }
