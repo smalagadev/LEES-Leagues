@@ -66,7 +66,7 @@ public class UserController {
 	
 	@PostMapping(value="/users")
 	@ResponseBody
-	public ResponseEntity<Boolean> insert(@RequestBody User u){
+	public ResponseEntity<Boolean> save(@RequestBody User u){
 		return ResponseEntity.ok(UserService.save(u));
 	}
 	

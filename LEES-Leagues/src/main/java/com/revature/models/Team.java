@@ -8,6 +8,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -20,7 +23,9 @@ public class Team implements Serializable {
 
 	private static final long serialVersionUID = -8461232721724337259L;
 
+	@Id
 	@Column(name="team_id", nullable=false, unique=true)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int teamId;
 
 	@Column(name="team_location", nullable=false)

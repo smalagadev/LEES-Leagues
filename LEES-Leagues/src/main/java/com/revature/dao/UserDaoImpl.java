@@ -58,11 +58,17 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public boolean save(User user) {
-		Session s = sf.getCurrentSession();
-		Transaction transaction = s.beginTransaction();
-		s.save(user);
-		transaction.commit();	
-		return true;
+		try(Session s = sf.getCurrentSession())
+		{
+			Transaction transaction = s.beginTransaction();
+			s.save(user);
+			transaction.commit();	
+			return true;
+			
+		}catch(NullPointerException e) {
+			logger.warn("could not get session", e);
+			return false;
+		}
 	}
 	
 	@Override
