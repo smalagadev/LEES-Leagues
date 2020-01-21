@@ -37,5 +37,9 @@ public class UserService {
 	public static boolean update(User u) {
 		return udao.update(u);
 	}
+	
+	public static boolean delete(User u) {
+		return udao.delete(u);
+	}
 
 }

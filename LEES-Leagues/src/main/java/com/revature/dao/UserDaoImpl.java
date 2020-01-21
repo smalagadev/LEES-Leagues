@@ -7,7 +7,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,8 +23,6 @@ public class UserDaoImpl implements UserDao {
 
 	@Autowired
 	private SessionFactory sf;
-	
-	private static Logger logger = Logger.getLogger(UserDaoImpl.class);
 
 	@Override
 	public User login(String username, String password) {
@@ -53,16 +50,6 @@ public class UserDaoImpl implements UserDao {
 		Query<User> q = s.createQuery(query);
 		transaction.commit();
 		return q.getSingleResult();
-	}
-
-	@Override
-	@Transactional
-	public boolean save(User user) {
-		Session s = sf.getCurrentSession();
-		Transaction transaction = s.beginTransaction();
-		s.save(user);
-		transaction.commit();	
-		return true;
 	}
 	
 	@Override
@@ -96,6 +83,16 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	@Transactional
+	public boolean save(User user) {
+		Session s = sf.getCurrentSession();
+		Transaction transaction = s.beginTransaction();
+		s.save(user);
+		transaction.commit();	
+		return true;
+	}
+	
+	@Override
+	@Transactional
 	public boolean update(User user) {
 		Session s = sf.getCurrentSession();
 		Transaction transaction = s.beginTransaction();
@@ -103,8 +100,6 @@ public class UserDaoImpl implements UserDao {
 		transaction.commit();
 		return true;
 	}
-	
-
 
 	@Override
 	public boolean delete(User u) {
