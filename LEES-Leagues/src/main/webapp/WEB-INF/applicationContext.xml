@@ -17,7 +17,7 @@
     <mvc:annotation-driven/>
     <tx:annotation-driven/>
 	<bean name="ourDataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="url" value="lees-leagues.cdjsh9pz2y2a.us-east-1.rds.amazonaws.com:5432/lees_leagues"/>
+		<property name="url" value="jdbc:postgresql://lees-leagues.cdjsh9pz2y2a.us-east-1.rds.amazonaws.com:5432/lees_leagues"/>
 		<property name="username" value="lees"/>
 		<property name="password" value="password"/>
 		<property name="driverClassName" value="org.postgresql.Driver"/>

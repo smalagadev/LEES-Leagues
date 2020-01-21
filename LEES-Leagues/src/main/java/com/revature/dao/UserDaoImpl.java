@@ -67,6 +67,7 @@ public class UserDaoImpl implements UserDao {
 			return true;
 			
 		}catch(NullPointerException e) {
+			e.printStackTrace();
 			logger.warn("could not get session", e);
 			return false;
 		}
