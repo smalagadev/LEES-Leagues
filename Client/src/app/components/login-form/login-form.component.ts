@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from './../../models/user';
 
 
 
@@ -9,9 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-  currentUser: any;
+  currentUser: User;
   username : string = '' ;
   password : string = '' ;
+
 
   constructor(private router: Router) { }
 
@@ -22,14 +24,21 @@ export class LoginFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  
-  sendLogin() {
-    this.currentUser.login(this.username, this.password).subscribe(
-      (response:User) => {
-        sessionStorage.setItem('currentUser', JSON.stringify(response));
-        console.log(response);
-        this.router.navigate(['/home']);
-      }
-    )
+  loginToggle: boolean = true;
+
+  login(): void{
+    this.router.navigate(['./home']);
+    sessionStorage.setItem('logged', 'true');// Delete when API is connected
   }
+
+
+  // sendLogin() {
+  //   this.currentUser.login(this.username, this.password).subscribe(
+  //     (response:User) => {
+  //       sessionStorage.setItem('currentUser', JSON.stringify(response));
+  //       console.log(response);
+  //       this.router.navigate(['/home']);
+  //     }
+  //   )
+  // }
 }
