@@ -1,7 +1,8 @@
+
 <div class="main-div">
 <mat-card class = "registration-card">
     <mat-card-header>
-        <div class="login-box-header">
+        <div class="registration-box-header">
         <mat-card-title>Registration</mat-card-title>
     </div>
     </mat-card-header>
@@ -10,41 +11,53 @@
             <table class="full-width" cellspacing="0">
                 <tr>
                     <td>
-                        <mat-form-field class="full-width">
+                        <mat-form-field  appearance="fill" class="full-width">
                             <input matInput placeholder="FirstName" [(ngModel)]="firstname" name="firstname" required>
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <mat-form-field class="full-width">
+                        <mat-form-field appearance="fill" class="full-width">
                     <input matInput placeholder="LastName" [(ngModel)]="lastname" name="lastname" required>
                     </mat-form-field></td>
                 </tr>
                 <tr>
                     <td>
-                        <mat-form-field class="full-width">
+                        
+                        <mat-form-field appearance="fill" class="full-width">
                     <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
-                    </mat-form-field></td>
+                    </mat-form-field>
+                
+                    </td>
                 </tr>
                 <tr>
                     <td>
-                        <mat-form-field class="full-width">
+                        <mat-form-field appearance="fill" class="full-width">
                             <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <mat-form-field class="full-width">
-                    <input type="password" matInput placeholder="Password" [(ngModel)]="password" name="password" required>
+                        <mat-form-field hintLabel="Max 10 characters" appearance="fill" class="full-width">
+                    <input type="password" matInput #input maxlength="10" placeholder="Password" [(ngModel)]="password" name="password" required>
+                    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
                     </mat-form-field></td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field hintLabel="Max 10 characters" appearance="fill" class="full-width">
+                            <input type="password" matInput #input maxlength="10" placeholder ="Re-enter Password" [(ngModel)]="confirmpass" name="password" required>
+                            <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+                        </mat-form-field>
+                    </td>
                 </tr>
             </table>
         </form>
         <!-- <mat-progress-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-progress-spinner> -->
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button (click)="submit()" color="primary">submit</button>
+        <button mat-raised-button (click)="newUser()" color="primary">Sign Up</button>
     </mat-card-actions>
   </mat-card>

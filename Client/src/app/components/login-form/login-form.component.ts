@@ -10,25 +10,25 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
   currentUser: any;
+  username : string = '' ;
+  password : string = '' ;
 
   constructor(private router: Router) { }
 
-  Register(){
+  // Register(){
 
-  }
+  // }
 
   ngOnInit() {
   }
 
-  username : string;
-  password : string;
-
+  
   sendLogin() {
     this.currentUser.login(this.username, this.password).subscribe(
-      (response: "") => {
+      (response:User) => {
         sessionStorage.setItem('currentUser', JSON.stringify(response));
         console.log(response);
-        this.router.navigate(['/']);
+        this.router.navigate(['/home']);
       }
     )
   }

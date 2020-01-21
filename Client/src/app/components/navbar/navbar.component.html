@@ -1,27 +1,19 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>LEES Leagues</span>
-        <span class = "example-fill remaining space"></span>
+        <button mat-icon-button>
+        </button>
+        <h1>LEES Leagues</h1>
+        <!-- <span class = "example-fill remaining space"></span> -->
         <span class = "align-center"></span>
-        <span class = "example-spacer"></span>
-            <!-- <button mat-button>About</button>
-            <button mat-button>Contact</button>
-            <button mat-icon-button [mat-menu-trigger-for]="menu">
-            <mat-icon></mat-icon>
-        </button> -->
-    <!-- <mat-menu #menu = "matMenu">
-        <button mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
-            <span>Redial</span>
-        </button>
-        <button mat-menu-item disabled>
-            <mat-icon>Voicemail</mat-icon>
-            <span>Check Voicemail</span>
-        </button>
-        <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
-        </button>
-    </mat-menu> -->
+        <span class = "menu-spacer"></span>
+            <div>
+                <a mat-button [routerLink]="'/'">Login or Register</a>
+                <a mat-button [routerLink]="'/home'"> Home </a>
+                <a mat-button [routerLink]="'/league'"> League </a>
+                <a mat-button [routerLink]="'/league_search'"> League Search </a>
+                <a mat-button [routerLink]="'/team'"> Team </a>
+                <a mat-button [routerLink]="'/team_search'"> Team Search </a>
+                <a mat-button [routerLink]="'/settings'"> Settings </a>
+            </div>
     </mat-toolbar-row>
 </mat-toolbar>
