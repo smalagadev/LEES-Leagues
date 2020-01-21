@@ -1,6 +1,7 @@
 package com.revature;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.revature.dao.TeamDaoImpl;
@@ -12,7 +13,6 @@ public class Driver {
 
 	public static void main(String[] args) {
 
-		@SuppressWarnings("resource")
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		UserDaoImpl udao = (UserDaoImpl) ac.getBean("userDao");
@@ -58,6 +58,9 @@ public class Driver {
 		tdao.save(new Team(30, "Washington", "Wizards", null));
 		
 		System.out.println(tdao.getByTeamId(1));
+		
+		((AbstractApplicationContext) ac).close();
+
 	}
 
 }
