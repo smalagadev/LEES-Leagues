@@ -1,0 +1,8 @@
+<h3>
+  Welcome to LEES Leagues. You can follow your favorite sports teams and players
+  and get the latest news, statistics, and games schedules. To view information
+  on your teams, register with us and sign in.
+</h3>
+
+<app-login-form *ngIf="loginRegisterToggle" (click)="ToggleForms()"></app-login-form>
+<app-registration-form *ngIf="!loginRegisterToggle" (click)="ToggleForms()"></app-registration-form>
