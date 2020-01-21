@@ -14,8 +14,8 @@
     http://www.springframework.org/schema/tx/spring-tx.xsd">
     
     <context:component-scan base-package="com.revature"/>
+    <mvc:annotation-driven/>
     <tx:annotation-driven/>
-    
 	<bean name="ourDataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="url" value="lees-leagues.cdjsh9pz2y2a.us-east-1.rds.amazonaws.com:5432/lees_leagues"/>
 		<property name="username" value="lees"/>
@@ -30,7 +30,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="show_sql">true</prop>
-				<prop key="hibernate.hbm2dll.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.default_schema">public</prop>
 			</props>
 		</property>
@@ -40,8 +40,6 @@
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		
 		<property name="sessionFactory" ref="sessionFactory"/>
-		<property name="nestedTransactionAllowed" value="true"/>
-			
+		<property name="nestedTransactionAllowed" value="true"/>		
 	</bean>
-    <mvc:annotation-driven></mvc:annotation-driven> 
 </beans>
