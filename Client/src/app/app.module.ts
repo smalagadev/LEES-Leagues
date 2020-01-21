@@ -1,9 +1,14 @@
+import { RouterModule } from '@angular/router';
 import { CustomMaterialModule } from './core/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, FormControl, FormGroup} from '@angular/forms';
+<<<<<<< HEAD
 
+=======
+import {MatTabsModule} from '@angular/material';
+>>>>>>> c413ca34c8dcd76413381f7f87189d9cb789259a
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +22,10 @@ import { TeamSearchComponent } from './components/team-search/team-search.compon
 import { LeagueSearchComponent } from './components/league-search/league-search.component';
 import { HomeComponent } from './components/home/home.component';
 import { SettingsComponent } from './components/settings/settings.component';
+<<<<<<< HEAD
 import { EditTeamsComponent } from './components/edit-teams/edit-teams.component';
+=======
+>>>>>>> c413ca34c8dcd76413381f7f87189d9cb789259a
 
 @NgModule({
   declarations: [
@@ -32,7 +40,10 @@ import { EditTeamsComponent } from './components/edit-teams/edit-teams.component
     LeagueSearchComponent,
     HomeComponent,
     SettingsComponent,
+<<<<<<< HEAD
     EditTeamsComponent
+=======
+>>>>>>> c413ca34c8dcd76413381f7f87189d9cb789259a
   ],
   imports: [
     BrowserModule,
@@ -40,6 +51,7 @@ import { EditTeamsComponent } from './components/edit-teams/edit-teams.component
     BrowserAnimationsModule,
     CustomMaterialModule,
     FormsModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
