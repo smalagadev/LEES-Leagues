@@ -64,4 +64,11 @@ public class UserDaoImpl implements UserDao {
 		s.update(u);
 	}
 
+	@Override
+	public boolean delete(User u) {
+		Session s = sf.getCurrentSession();
+		s.delete(u);
+		return true;
+	} 
+	
 }
