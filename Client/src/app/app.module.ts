@@ -30,7 +30,7 @@ import { SettingsComponent } from './components/settings/settings.component';
     TeamSearchComponent,
     LeagueSearchComponent,
     HomeComponent,
-    SettingsComponent
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
