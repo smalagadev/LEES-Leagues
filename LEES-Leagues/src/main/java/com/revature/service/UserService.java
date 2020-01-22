@@ -2,13 +2,19 @@ package com.revature.service;
 
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
+
 import com.revature.dao.UserDao;
 import com.revature.dao.UserDaoImpl;
 import com.revature.models.User;
 
+@Service
 public class UserService {
 	
-	private static UserDao udao = new UserDaoImpl();
+	private static ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+	private static UserDao udao = (UserDao) ac.getBean("userDaoImpl");
 	
 	public UserService() {
 		

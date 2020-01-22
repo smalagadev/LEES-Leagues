@@ -26,7 +26,7 @@ public class UserDaoImpl implements UserDao {
 	private static Logger logger = LogManager.getLogger(UserDaoImpl.class);
 	
 	@Autowired
-	private SessionFactory sf;
+	private SessionFactory sessionFactory;
 
 	@Override
 	public User login(String username, String password) {
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public User getByUsername(String username) {
-		Session s = sf.getCurrentSession();
+		Session s = sessionFactory.getCurrentSession();
 		Transaction transaction = s.beginTransaction();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
@@ -59,9 +59,9 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public boolean save(User user) {
-		try(Session s = sf.getCurrentSession())
+		try(Session s = sessionFactory.getCurrentSession())
 		{
-			Transaction transaction = s.beginTransaction();
+			Transaction transaction = s.getTransaction();
 			s.save(user);
 			transaction.commit();	
 			return true;
@@ -71,13 +71,14 @@ public class UserDaoImpl implements UserDao {
 			logger.warn("could not get session", e);
 			return false;
 		}
+
 	}
 
 	
 	@Override
 	@Transactional
 	public User getById(int id) {
-		Session s = sf.getCurrentSession();
+		Session s = sessionFactory.getCurrentSession();
 		Transaction transaction = s.beginTransaction();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
@@ -92,7 +93,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<User> findAll() {
-		Session s = sf.getCurrentSession();
+		Session s = sessionFactory.getCurrentSession();
 		Transaction transaction  = s.beginTransaction();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
@@ -107,7 +108,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public boolean update(User user) {
-		Session s = sf.getCurrentSession();
+		Session s = sessionFactory.getCurrentSession();
 		Transaction transaction = s.beginTransaction();
 		s.update(user);
 		transaction.commit();
@@ -116,7 +117,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public boolean delete(User u) {
-		Session s = sf.getCurrentSession();
+		Session s = sessionFactory.getCurrentSession();
 		s.delete(u);
 		return true;
 	} 
