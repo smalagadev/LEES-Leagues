@@ -23,6 +23,7 @@ export class RegistrationFormComponent implements OnInit {
   // }
   ngOnInit() {
   }
+
   newUser() {
     if(this.password != this.confirmpass){
       document.getElementById("warning").innerHTML = "Your passwords do not match, please try again.";
@@ -30,6 +31,12 @@ export class RegistrationFormComponent implements OnInit {
       this.us.newUser(this.username, this.password, this.firstname, this.lastname, this.email).subscribe();
       this.router.navigate(['/login']);
     }
+  }
+
+  register(){
+    // validate information
+    // send registration to backend
+    // redirect back to root page
   }
 
 }

@@ -22,11 +22,14 @@ export class LoginFormComponent implements OnInit {
 
 
   login(): void{
-    this.router.navigate(['./home']);
-    sessionStorage.setItem('logged', 'true');// Delete when API is connected
-  }
+    // this.router.navigate(['./home']);
+    // sessionStorage.setItem('logged', 'true');// Delete when API is connected
 
-  Register(){
+      // validate information
+      // send login to backend
+      //  if success full redirect back to home page
+      //  save http response to sessionStorage as currentUser
+      //  if incorrect information, let user know
 
   }
 
