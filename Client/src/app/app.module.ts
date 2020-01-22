@@ -3,8 +3,11 @@ import { CustomMaterialModule } from './core/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule, FormControl, FormGroup} from '@angular/forms';
-import {MatTabsModule} from '@angular/material';
+import { FormsModule, FormControl, FormGroup } from '@angular/forms';
+import { MatTabsModule } from '@angular/material';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { HttpClientModule } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +49,9 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
     CustomMaterialModule,
     FormsModule,
     MatTabsModule,
+    MatExpansionModule,
+    MatListModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
