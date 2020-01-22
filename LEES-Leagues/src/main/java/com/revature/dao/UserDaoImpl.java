@@ -46,13 +46,11 @@ public class UserDaoImpl implements UserDao {
 	@Transactional
 	public User getByUsername(String username) {
 		Session s = sessionFactory.getCurrentSession();
-		Transaction transaction = s.beginTransaction();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root).where(builder.equal(root.get("username"), username));
 		Query<User> q = s.createQuery(query);
-		transaction.commit();
 		return q.getSingleResult();
 	}
 
@@ -61,9 +59,7 @@ public class UserDaoImpl implements UserDao {
 	public boolean save(User user) {
 		try(Session s = sessionFactory.getCurrentSession())
 		{
-			Transaction transaction = s.getTransaction();
 			s.save(user);
-			transaction.commit();	
 			return true;
 			
 		}catch(NullPointerException e) {
@@ -79,13 +75,11 @@ public class UserDaoImpl implements UserDao {
 	@Transactional
 	public User getById(int id) {
 		Session s = sessionFactory.getCurrentSession();
-		Transaction transaction = s.beginTransaction();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root).where(builder.equal(root.get("user_id"), id));
 		Query<User> q = s.createQuery(query);
-		transaction.commit();
 		return q.getSingleResult();
 	}
 
@@ -94,13 +88,11 @@ public class UserDaoImpl implements UserDao {
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<User> findAll() {
 		Session s = sessionFactory.getCurrentSession();
-		Transaction transaction  = s.beginTransaction();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root);
 		Query<User> q = s.createQuery(query);
-		transaction.commit();
 		return q.getResultList();
 	}
 
@@ -109,9 +101,7 @@ public class UserDaoImpl implements UserDao {
 	@Transactional
 	public boolean update(User user) {
 		Session s = sessionFactory.getCurrentSession();
-		Transaction transaction = s.beginTransaction();
 		s.update(user);
-		transaction.commit();
 		return true;
 	}
 
