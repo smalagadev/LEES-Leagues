@@ -16,9 +16,10 @@ public class TeamService {
 	
 	public List<Team> getAllTeams() {
 		return tdao.getAllTeams();
+
 	}
 	
-	public List<Team> getByTeamId(int id) {
+	public Team getByTeamId(int id) {
 		return tdao.getByTeamId(id);
 	}
 	
@@ -28,6 +29,10 @@ public class TeamService {
 	
 	public void save(Team team) {
 		
+	}
+	
+	public void setTeamDao(TeamDao tdao) {
+		this.tdao = tdao;
 	}
 	
 }

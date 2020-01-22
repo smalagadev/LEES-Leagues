@@ -7,7 +7,7 @@ import com.revature.models.Team;
 public interface TeamDao {
 
 	public List<Team> getAllTeams();
-	public List<Team> getByTeamId(int id);
+	public Team getByTeamId(int id);
 	public List<Team> getByUserId(int id);
 	public void save(Team team);
 	
