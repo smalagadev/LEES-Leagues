@@ -1,11 +1,21 @@
 <h3>
-
   Welcome to LEES Leagues. You can follow your favorite sports teams and players
   and get the latest news, statistics, and games schedules. To view information
   on your teams, register with us and sign in.
-</h3>\
+</h3>
 
-<app-login-form *ngIf="loginToggle"></app-login-form>
-<app-registration-form *ngIf="!loginToggle"></app-registration-form>
-<a *ngIf="loginToggle" (click)="toggleForm()">Don't have an accout? Click here to register</a>
-<a *ngIf="!loginToggle" (click)="toggleForm()">Already have an account? Sign in.</a>
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+        <div class="login-box-header"></div>
+        <mat-card-title>{{ loginToggle ? "Login" : "Register" }}</mat-card-title>
+    </mat-card-header>
+
+    <app-login-form *ngIf="loginToggle"></app-login-form>
+    <app-registration-form *ngIf="!loginToggle"></app-registration-form>
+    <hr>
+    <a (click)="toggleForm()">
+      {{ loginToggle ? "Don't have an account? Click here to register." : "Already have an account? Log in." }}
+    </a>
+  </mat-card>
+</div>

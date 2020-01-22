@@ -1,0 +1,13 @@
+app-login-form{
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+app-registration-form{
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
