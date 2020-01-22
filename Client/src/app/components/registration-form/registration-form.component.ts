@@ -7,23 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent implements OnInit {
-<<<<<<< HEAD
-
-  constructor() { }
-
-  submit(){
-    
-  }
-  ngOnInit() {
-  }
-  username : string;
-  password : string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  
-}
-=======
   username : string;
   password : string;
   confirmpass : string;
@@ -32,7 +15,7 @@ export class RegistrationFormComponent implements OnInit {
   email: string;
   us: any;
   router: any;
-  
+
   constructor() { }
   // constructor(private us: UserService, private router: Router) { }
   // register(){
@@ -48,7 +31,5 @@ export class RegistrationFormComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-  
-}
 
->>>>>>> c413ca34c8dcd76413381f7f87189d9cb789259a
+}

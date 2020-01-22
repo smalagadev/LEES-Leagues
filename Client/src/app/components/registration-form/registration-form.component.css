@@ -1,9 +1,5 @@
 .main-div{
-<<<<<<< HEAD
-  height: 50vh;
-=======
   height: 70vh;
->>>>>>> c413ca34c8dcd76413381f7f87189d9cb789259a
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +10,7 @@
     max-width: 500px;
     width: 100%;
   }
-   
+
   .full-width {
     width: 100%;
   } */
