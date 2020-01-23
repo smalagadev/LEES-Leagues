@@ -11,7 +11,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,7 +25,7 @@ public class UserDaoImpl implements UserDao {
 	private static Logger logger = LogManager.getLogger(UserDaoImpl.class);
 	
 	@Autowired
-	private SessionFactory sf;
+	private SessionFactory sessionFactory;
 
 	@Override
 	public User login(String username, String password) {
@@ -45,45 +44,44 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public User getByUsername(String username) {
-		Session s = sf.getCurrentSession();
-		Transaction transaction = s.beginTransaction();
+		Session s = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root).where(builder.equal(root.get("username"), username));
 		Query<User> q = s.createQuery(query);
-		transaction.commit();
 		return q.getSingleResult();
 	}
 
 	@Override
 	@Transactional
 	public boolean save(User user) {
-		try(Session s = sf.getCurrentSession())
-		{
-			Transaction transaction = s.beginTransaction();
-			s.save(user);
-			transaction.commit();	
-			return true;
-			
-		}catch(NullPointerException e) {
-			logger.warn("could not get session", e);
-			return false;
-		}
+//		try(Session s = sessionFactory.getCurrentSession())
+//		{
+//			s.save(user);
+//			return true;
+//			
+//		}catch(NullPointerException e) {
+//			e.printStackTrace();
+//			logger.warn("could not get session", e);
+//			return false;
+//		}
+		Session s = sessionFactory.getCurrentSession();
+		s.save(user);
+		return true;
+
 	}
 
 	
 	@Override
 	@Transactional
 	public User getById(int id) {
-		Session s = sf.getCurrentSession();
-		Transaction transaction = s.beginTransaction();
+		Session s = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root).where(builder.equal(root.get("user_id"), id));
 		Query<User> q = s.createQuery(query);
-		transaction.commit();
 		return q.getSingleResult();
 	}
 
@@ -91,14 +89,12 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<User> findAll() {
-		Session s = sf.getCurrentSession();
-		Transaction transaction  = s.beginTransaction();
+		Session s = sessionFactory.getCurrentSession();
 		CriteriaBuilder builder = s.getCriteriaBuilder();
 		CriteriaQuery<User> query = builder.createQuery(User.class);
 		Root<User> root = query.from(User.class);
 		query.select(root);
 		Query<User> q = s.createQuery(query);
-		transaction.commit();
 		return q.getResultList();
 	}
 
@@ -106,16 +102,14 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public boolean update(User user) {
-		Session s = sf.getCurrentSession();
-		Transaction transaction = s.beginTransaction();
+		Session s = sessionFactory.getCurrentSession();
 		s.update(user);
-		transaction.commit();
 		return true;
 	}
 
 	@Override
 	public boolean delete(User u) {
-		Session s = sf.getCurrentSession();
+		Session s = sessionFactory.getCurrentSession();
 		s.delete(u);
 		return true;
 	} 
