@@ -108,10 +108,20 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	@Transactional
 	public boolean delete(User u) {
 		Session s = sessionFactory.getCurrentSession();
 		s.delete(u);
 		return true;
+	}
+
+
+	@Override
+	@Transactional
+	public void logout() {
+		Session s = sessionFactory.getCurrentSession();
+		s.clear();
+		
 	} 
 	
 }

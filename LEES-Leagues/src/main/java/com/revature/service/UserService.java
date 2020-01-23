@@ -46,5 +46,9 @@ public class UserService {
 	public static boolean delete(User u) {
 		return udao.delete(u);
 	}
+	
+	public static void logout() {
+		udao.logout();
+	}
 
 }

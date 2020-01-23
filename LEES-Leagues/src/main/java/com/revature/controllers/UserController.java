@@ -28,7 +28,7 @@ public class UserController {
 		return UserService.findAll();
 	}
 	
-	@GetMapping(value="/users/{id}")
+	@PostMapping(value="/users/{id}")
 	@ResponseBody
 	public ResponseEntity<User> findById(@PathVariable("id") int id){
 		User u = UserService.getById(id);
@@ -39,7 +39,7 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(u);
 	}
 	
-	@GetMapping(value="/users/{username}")
+	@PostMapping(value="/users/{username}")
 	@ResponseBody
 	public ResponseEntity<User> findByusername(@PathVariable("username") String username){
 		User u = UserService.getByUsername(username);
@@ -50,7 +50,7 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(u);
 	}
 	
-	@GetMapping(value="/users/login")
+	@PostMapping(value="/users/login")
 	@ResponseBody
 	public ResponseEntity<User> login(@PathVariable("username") String username, @PathVariable("password") String password){
 		User u = UserService.login(username, password);
@@ -59,6 +59,13 @@ public class UserController {
 		}
 		
 		return ResponseEntity.status(HttpStatus.OK).body(u);
+	}
+	
+	@PostMapping(value="/users/logout")
+	@ResponseBody
+	public ResponseEntity<Void> logout() {
+		UserService.logout();
+		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 	@PutMapping(value="/users")
 	@ResponseBody
