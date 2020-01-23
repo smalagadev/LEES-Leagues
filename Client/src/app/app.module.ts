@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CustomMaterialModule } from './core/material.module';
 import { BrowserModule } from '@angular/platform-browser';
