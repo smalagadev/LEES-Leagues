@@ -8,38 +8,42 @@ import com.revature.models.User;
 
 public class UserService {
 	
-	private static UserDao udao = new UserDaoImpl();
+	private UserDao udao = new UserDaoImpl();
 	
 	public UserService() {
 		
 	}
 	
-	public static List<User> findAll() {
+	public List<User> findAll() {
 		return udao.findAll();
 	}
 	
-	public static User getById(int id) {
+	public User getById(int id) {
 		return udao.getById(id);
 	}
 	
-	public static User getByUsername(String username) {
+	public User getByUsername(String username) {
 		return udao.getByUsername(username);
 	}
 	
-	public static User login(String username, String password) {
+	public User login(String username, String password) {
 		return udao.login(username, password);
 	}
 	
-	public static boolean save(User u) {
+	public boolean save(User u) {
 		return udao.save(u);
 	}
 	
-	public static boolean update(User u) {
+	public boolean update(User u) {
 		return udao.update(u);
 	}
 	
-	public static boolean delete(User u) {
+	public boolean delete(User u) {
 		return udao.delete(u);
+	}
+	
+	public void setUserDao(UserDao udao) {
+		this.udao = udao;
 	}
 
 }

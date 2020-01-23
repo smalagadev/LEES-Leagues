@@ -23,7 +23,7 @@ public class TeamDAOTest {
 	private TeamService service;
 	
 	@Mock
-	private TeamDao dao; //we will be mocking this class
+	private TeamDao dao;
 	
 	@Mock
 	private Team team;
@@ -48,13 +48,10 @@ public class TeamDAOTest {
 	list.add(new Team(1,"Atlanta","Hawks",null));
 	list.add(new Team(2,"Boston","Celtics",null));
 	 
-	//MOCK ALERT: return mocked result set on find
 	when(dao.getAllTeams()).thenReturn(list); 
 	 
-	//call the main method you want to test
 	List<Team> result = service.getAllTeams();
 	 
-	//MOCK ALERT: verify the method was called
 	verify(dao).getAllTeams();
 	
 	assertNotNull(result);
@@ -85,19 +82,6 @@ public class TeamDAOTest {
 	//@Test
 	public void testSave() {
 		
-	}
-
-	//@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	//@After
-	public void tearDown() throws Exception {
-	}
-
-	//@Test
-	public void test() {
-		fail("Not yet implemented");
 	}
 
 }
