@@ -8,26 +8,31 @@ import com.revature.models.Team;
 
 public class TeamService {
 
-	private TeamDao tdao = new TeamDaoImpl();
+	private static TeamDao tdao = new TeamDaoImpl();
 
 	public TeamService() {
 		
 	}
 	
-	public List<Team> getAllTeams() {
+	public static List<Team> getAllTeams() {
 		return tdao.getAllTeams();
+
 	}
 	
-	public List<Team> getByTeamId(int id) {
+	public static Team getByTeamId(int id) {
 		return tdao.getByTeamId(id);
 	}
 	
-	public List<Team> getByUserId(int id) {
+	public static List<Team> getByUserId(int id) {
 		return tdao.getByUserId(id);
 	}
 	
-	public void save(Team team) {
+	public static void save(Team team) {
 		
+	}
+	
+	public void setTeamDao(TeamDao tdao) {
+		TeamService.tdao = tdao;
 	}
 	
 }

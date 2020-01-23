@@ -8,41 +8,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.revature.models.Team;
-import com.revature.models.User;
+import com.revature.models.League;
 
-public class TeamDaoImpl implements TeamDao {
-	
+public class LeagueDaoImpl implements LeagueDao {
+
 	@Autowired
 	private SessionFactory sf;
 	
 	@SuppressWarnings({"deprecation", "unchecked"})
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Team> getAllTeams() {
+	public List<League> getAllLeagues() {
 		
 		Session s = sf.getCurrentSession();
-		return (List<Team>) s.createCriteria(Team.class).list();
+		return (List<League>) s.createCriteria(League.class).list();
 	}
 
 	@Override
-	public Team getByTeamId(int id) {
+	public League getByLeagueId(int id) {
 		Session s = sf.getCurrentSession();
-		return s.get(Team.class, id);
+		return s.get(League.class, id);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<Team> getByUserId(int id) {
+	public void save(League league) {
 		Session s = sf.getCurrentSession();
-		return (List<Team>) s.get(User.class, id);
+		s.save(league);
 	}
-	
-	@Override
-	@Transactional
-	public void save(Team t) {
-		Session s = sf.getCurrentSession();
-		s.save(t);
-	}
-	
+
 }
