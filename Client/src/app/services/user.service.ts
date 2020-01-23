@@ -9,11 +9,12 @@ export class UserService {
 
   constructor(private http : HttpClient) { }
 
-  login(username : string, password : string){
+  login(username : string, password : string) : Observable<User>{
     let body : any = {
       username : username,
       password : password
     };
+    console.log(body);
     return this.http.post<User>('http://localhost:8080/LEES-Leagues/users/login', body);
   }
 

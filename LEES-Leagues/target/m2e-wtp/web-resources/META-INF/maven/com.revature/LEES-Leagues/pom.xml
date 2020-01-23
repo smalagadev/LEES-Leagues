@@ -114,5 +114,10 @@
 			<version>5.4.10.Final</version>
 		</dependency>
 		
+		<dependency>
+  			<groupId>com.thetransactioncompany</groupId>
+  			<artifactId>cors-filter</artifactId>
+  			<version>1.8</version>
+		</dependency>
 	</dependencies>
 </project>

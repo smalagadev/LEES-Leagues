@@ -11,7 +11,9 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-
+    if(sessionStorage.getItem('currentUser') === undefined){
+      this.router.navigate(['/home']);
+    }
   }
 
   logged: boolean = JSON.parse(sessionStorage.getItem('logged'));// Delete when API is connected

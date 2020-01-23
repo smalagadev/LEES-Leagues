@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, FormControl, FormGroup} from '@angular/forms';
 import {MatTabsModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { EditTeamsComponent } from './components/edit-teams/edit-teams.component
     CustomMaterialModule,
     FormsModule,
     MatTabsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
