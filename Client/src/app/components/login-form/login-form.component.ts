@@ -15,13 +15,11 @@ export class LoginFormComponent implements OnInit {
   username : string = '' ;
   password : string = '' ;
 
-
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
-  loginToggle: boolean = true;
 
   login(): void{
     this.router.navigate(['./home']);
@@ -31,7 +29,7 @@ export class LoginFormComponent implements OnInit {
   Register(){
 
   }
-  
+
   // sendLogin() {
   //   this.currentUser.login(this.username, this.password).subscribe(
   //     (response:User) => {

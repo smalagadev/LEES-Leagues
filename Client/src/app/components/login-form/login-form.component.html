@@ -1,46 +1,25 @@
-<div class="main-div">
-<mat-card class = "example-card">
-    <mat-card-header>
-        <div class="login-box-header"></div>
-        <mat-card-title>Welcome Back!</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-        <form class="example-form">
-            <table class="example-full-width" cellspacing="0">
-                <tr>
-                    <td>
-<<<<<<< HEAD
-                        <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-=======
-                        <mat-form-field appearance="fill" class="example-full-width">
-                            <input matInput  placeholder="Username" [(ngModel)]="username" name="username" required>
->>>>>>> c413ca34c8dcd76413381f7f87189d9cb789259a
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-<<<<<<< HEAD
-                        <mat-form-field class="example-full-width">
-                    <input type= "password" matInput placeholder="Password" [(ngModel)]="password" name="password" required>
-=======
-                        <mat-form-field appearance="fill" class="example-full-width">
-                    <input type= "password" matInput #input maxlength="10"  placeholder="Password" [(ngModel)]="password" name="password" required>
-                    <mat-hint MatHint.align="start">{{input.value?.length || 0}}/10</mat-hint>
->>>>>>> c413ca34c8dcd76413381f7f87189d9cb789259a
-                    </mat-form-field></td>
-                </tr>
-            </table>
-        </form>
-        <mat-progress-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-progress-spinner>
-    </mat-card-content>
-    <mat-card-actions>
-<<<<<<< HEAD
-        <button mat-raised-button (click)="sendLogin()" color="primary">Login</button>
-=======
-        <button mat-raised-button (click)="login()" color="primary">Login</button>
->>>>>>> c413ca34c8dcd76413381f7f87189d9cb789259a
-        <button mat-raised-button (click)="Register()" color="primary">Register</button>
-    </mat-card-actions>
-  </mat-card>
+  <mat-card-content>
+      <form class="example-form">
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                  <td>
+                      <mat-form-field appearance="fill" class="example-full-width">
+                          <input matInput  placeholder="Username" [(ngModel)]="username" name="username" required>
+                      </mat-form-field>
+                  </td>
+              </tr>
+              <tr>
+                  <td>
+                      <mat-form-field appearance="fill" class="example-full-width">
+                  <input type= "password" matInput #input maxlength="10"  placeholder="Password" [(ngModel)]="password" name="password" required>
+                  <mat-hint MatHint.align="start"> {{ input.value.length || 0 }} /10</mat-hint>
+                  </mat-form-field>
+                </td>
+              </tr>
+          </table>
+      </form>
+      <mat-progress-spinner [style.display] ="showSpinner ? 'block' : 'none'"></mat-progress-spinner>
+  </mat-card-content>
+  <mat-card-actions>
+      <button mat-raised-button (click)="login()" color="primary">Login</button>
+  </mat-card-actions>
