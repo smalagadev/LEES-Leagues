@@ -28,6 +28,7 @@ public class UserDaoImpl implements UserDao {
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	public User login(String username, String password) {
 		User user = getByUsername(username);
 		if(user == null) {
