@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CustomMaterialModule } from './core/material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,6 +43,7 @@ import { EditTeamsComponent } from './components/edit-teams/edit-teams.component
     CustomMaterialModule,
     FormsModule,
     MatTabsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
