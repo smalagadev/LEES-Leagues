@@ -1,1 +1,13 @@
-<p>news-feed works!</p>
+<mat-accordion *ngFor="let a of articles">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ a.publishedAt }} | {{ a.source.name }}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ a.title }}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    {{ a.description }} <a href="{{ a.url }}">Click here to continue reading on website.</a>
+  </mat-expansion-panel>
+</mat-accordion>
