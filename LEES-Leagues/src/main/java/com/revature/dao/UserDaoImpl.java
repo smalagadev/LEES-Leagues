@@ -11,7 +11,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -57,16 +56,19 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public boolean save(User user) {
-		try(Session s = sessionFactory.getCurrentSession())
-		{
-			s.save(user);
-			return true;
-			
-		}catch(NullPointerException e) {
-			e.printStackTrace();
-			logger.warn("could not get session", e);
-			return false;
-		}
+//		try(Session s = sessionFactory.getCurrentSession())
+//		{
+//			s.save(user);
+//			return true;
+//			
+//		}catch(NullPointerException e) {
+//			e.printStackTrace();
+//			logger.warn("could not get session", e);
+//			return false;
+//		}
+		Session s = sessionFactory.getCurrentSession();
+		s.save(user);
+		return true;
 
 	}
 

@@ -19,9 +19,9 @@
     <context:annotation-config></context:annotation-config>
     
 	<bean name="ourDataSource" class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="url" value="jdbc:postgresql://localhost:5432/postgres"/>
-		<property name="username" value="postgres"/>
-		<property name="password" value="Ej695950"/>
+		<property name="url" value="jdbc:postgresql://lees-leagues.cdjsh9pz2y2a.us-east-1.rds.amazonaws.com:5432/lees_leagues"/>
+		<property name="username" value="lees"/>
+		<property name="password" value="password"/>
 		<property name="driverClassName" value="org.postgresql.Driver"/>
 	</bean>
 	
