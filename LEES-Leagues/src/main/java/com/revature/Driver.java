@@ -4,8 +4,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.revature.dao.LeagueDaoImpl;
+import com.revature.dao.SportDaoImpl;
 import com.revature.dao.TeamDaoImpl;
 import com.revature.dao.UserDaoImpl;
+import com.revature.models.League;
+import com.revature.models.Sport;
 import com.revature.models.Team;
 import com.revature.models.User;
 
@@ -58,6 +62,22 @@ public class Driver {
 		tdao.save(new Team(30, "Washington", "Wizards", null));
 		
 		System.out.println(tdao.getByTeamId(1));
+		
+		LeagueDaoImpl ldao = (LeagueDaoImpl) ac.getBean("leagueDao");
+		
+		ldao.save(new League("National Basketball League", 1));
+		ldao.save(new League("National Football League", 2));
+		ldao.save(new League("Major League Baseball", 3));
+		ldao.save(new League("National Hockey League", 4));
+		ldao.save(new League("Major League Soccer", 5));
+		
+		SportDaoImpl sdao = (SportDaoImpl) ac.getBean("sportDao");
+		
+		sdao.save(new Sport(1, "Basketball"));
+		sdao.save(new Sport(2, "Football"));
+		sdao.save(new Sport(3, "Baseball"));
+		sdao.save(new Sport(4, "Hockey"));
+		sdao.save(new Sport(5, "Soccer"));
 		
 		((AbstractApplicationContext) ac).close();
 

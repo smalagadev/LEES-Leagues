@@ -7,8 +7,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -21,8 +19,6 @@ import com.revature.models.User;
 
 @Repository
 public class UserDaoImpl implements UserDao {
-
-	private static Logger logger = LogManager.getLogger(UserDaoImpl.class);
 	
 	@Autowired
 	private SessionFactory sessionFactory;
