@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { ArticlesService } from './../../services/articles.service';
+import { Article } from './../../models/article';
 
 @Component({
   selector: 'app-news-feed',
@@ -7,10 +8,16 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrls: ['./news-feed.component.css']
 })
 export class NewsFeedComponent implements OnInit {
+  articles: Article[] = [];
 
-  constructor() { }
+  constructor(private as: ArticlesService) { }
 
   ngOnInit() {
+    this.as.viewAll().subscribe(
+      (response: any) => {
+        this.articles = response.articles;
+      });
   }
 
+  panelOpenState = true;
 }
