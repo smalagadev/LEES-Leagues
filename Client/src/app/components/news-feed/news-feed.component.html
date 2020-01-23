@@ -1,13 +1,15 @@
-<mat-accordion *ngFor="let a of articles">
+<mat-list dense *ngFor="let a of articles">
+ <mat-list-item> <img src="{{ a.urlToImage }}" alt=""> {{ a.publishedAt }} | {{ a.title }} - {{ a.description }} <a href="{{ a.url }}" target="_blank">Continue reading...</a></mat-list-item>
+</mat-list>
+
+<!-- <mat-accordion>
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ a.publishedAt }} | {{ a.source.name }}
+
       </mat-panel-title>
-      <mat-panel-description>
-        {{ a.title }}
-      </mat-panel-description>
+
     </mat-expansion-panel-header>
-    {{ a.description }} <a href="{{ a.url }}">Click here to continue reading on website.</a>
+
   </mat-expansion-panel>
-</mat-accordion>
+</mat-accordion> -->
