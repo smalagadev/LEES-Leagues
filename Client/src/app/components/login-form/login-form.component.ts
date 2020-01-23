@@ -28,8 +28,8 @@ export class LoginFormComponent implements OnInit {
         this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         console.log(JSON.stringify(response));
         console.log(this.currentUser);
+        this.router.navigate(['./home']);
     })
-    this.router.navigate(['./home']);
     sessionStorage.setItem('logged', 'true');// Delete when API is connected
   }
 
