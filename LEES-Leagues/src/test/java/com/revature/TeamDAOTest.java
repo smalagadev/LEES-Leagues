@@ -20,13 +20,13 @@ import com.revature.service.TeamService;
 
 public class TeamDAOTest {
 	
-	private TeamService service;
+	private static TeamService service;
 	
 	@Mock
-	private TeamDao dao;
+	private static TeamDao dao;
 	
 	@Mock
-	private Team team;
+	private static Team team;
 
 	@Before
 	public void setup() {
@@ -36,51 +36,47 @@ public class TeamDAOTest {
 	}
 	
 	@Test
-	public void testMockCreation() {
+	public static void testMockCreation() {
 		assertNotNull(service);
 		assertNotNull(dao);
 		assertNotNull(team);
 	}
 	
 	@Test
-	public void testGetAllTeams() {
+	public static void testGetAllTeams() {
 	List<Team> list = new ArrayList<>();
 	list.add(new Team(1,"Atlanta","Hawks",null));
 	list.add(new Team(2,"Boston","Celtics",null));
-	 
 	when(dao.getAllTeams()).thenReturn(list); 
-	 
-	List<Team> result = service.getAllTeams();
-	 
+	List<Team> result = TeamService.getAllTeams();
 	verify(dao).getAllTeams();
-	
 	assertNotNull(result);
 	assertFalse(result.isEmpty());
 	}
 	
 	@Test
-	public void testGetByTeamId() {
+	public static void testGetByTeamId() {
 		Team t = new Team(1, "Atlanta", "Hawks", null);
 		when(dao.getByTeamId(1)).thenReturn(t);
-		Team result = service.getByTeamId(1);
+		Team result = TeamService.getByTeamId(1);
 		verify(dao).getByTeamId(1);
 		assertNotNull(result);
 	}
 	
 	@Test
-	public void testGetByUserId() {
+	public static void testGetByUserId() {
 		List<Team> list = new ArrayList<Team>();
 		list.add(new Team(1, "Atlanta", "Hawks"));
 		list.add(new Team(2, "Boston", "Celtics"));
 		when(dao.getByUserId(1)).thenReturn(list);
-		List<Team> result = service.getByUserId(1);
+		List<Team> result = TeamService.getByUserId(1);
 		verify(dao, atLeastOnce()).getByUserId(1);
 		assertNotNull(result);
 		assertFalse(result.isEmpty());
 	}
 	
 	//@Test
-	public void testSave() {
+	public static void testSave() {
 		
 	}
 

@@ -18,13 +18,13 @@ import com.revature.service.UserService;
 
 public class UserDAOTest {
 
-	private UserService service;
+	private static UserService service;
 	
 	@Mock
-	private UserDao dao;
+	private static UserDao dao;
 	
 	@Mock
-	private User User;
+	private static User User;
 
 	@Before
 	public void setup() {
@@ -34,63 +34,59 @@ public class UserDAOTest {
 	}
 	
 	@Test
-	public void testMockCreation() {
+	public static void testMockCreation() {
 		assertNotNull(service);
 		assertNotNull(dao);
 		assertNotNull(User);
 	}
 	
 	@Test
-	public void testfindAll() {
+	public static void testfindAll() {
 	List<User> list = new ArrayList<>();
 	list.add(new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com"));
 	list.add(new User("Stefanno", "Malaga", "smalagadev", "password", "smalaga@revature.com"));
-	 
 	when(dao.findAll()).thenReturn(list); 
-	 
-	List<User> result = service.findAll();
-	 
+	List<User> result = UserService.findAll();
 	verify(dao).findAll();
-	
 	assertNotNull(result);
 	assertFalse(result.isEmpty());
 	}
 	
 	@Test
-	public void testGetByUserId() {
+	public static void testGetByUserId() {
 		User u = new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com");
 		when(dao.getById(1)).thenReturn(u);
-		User result = service.getById(1);
+		User result = UserService.getById(1);
 		verify(dao).getById(1);
 		assertNotNull(result);
 	}
 	
 	@Test
-	public void testGetByUsername() {
+	public static void testGetByUsername() {
 		User u = new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com");
 		when(dao.getByUsername("lmr608")).thenReturn(u);
-		User result = service.getByUsername("lmr608");
+		User result = UserService.getByUsername("lmr608");
 		verify(dao).getByUsername("lmr608");
 		assertNotNull(result);
 	}
 	
 	//@Test
-	public void testLogin() {
+	public static void testLogin() {
 		
 	}
 	
 	//@Test
-	public void testSave() {
+	public static void testSave() {
 		
 	}
 	
 	//@Test
-	public void testUpdate() {
+	public static void testUpdate() {
 		
 	}
 	
 	//@Test
-	public void testDelete() {
+	public static void testDelete() {
 		
 	}
 
