@@ -27,6 +27,10 @@ export class TeamService {
     return this.http.put<boolean>(this.baseUrl + '/teams', body);
   }
 
-  }
-  
 
+  // returns next games for the league
+  // Include id as a parameter and plug parameter into url
+  getGameSchedules(){
+    return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=4387`);
+  }
+}
