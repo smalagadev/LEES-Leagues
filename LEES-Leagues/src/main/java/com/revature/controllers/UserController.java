@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -26,7 +27,7 @@ public class UserController {
 		return UserService.findAll();
 	}
 	
-	@PostMapping(value="/users/{id}")
+	@GetMapping(value="/users/{id}")
 	@ResponseBody
 	public ResponseEntity<User> findById(@PathVariable("id") int id){
 		User u = UserService.getById(id);
@@ -37,7 +38,7 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(u);
 	}
 	
-	@PostMapping(value="/users/{username}")
+	@GetMapping(value="/users/{username}")
 	@ResponseBody
 	public ResponseEntity<User> findByusername(@PathVariable("username") String username){
 		User u = UserService.getByUsername(username);

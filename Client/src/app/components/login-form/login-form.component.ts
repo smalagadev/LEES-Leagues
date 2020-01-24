@@ -26,16 +26,12 @@ export class LoginFormComponent implements OnInit {
       (response : User) =>{
         sessionStorage.setItem('currentUser', JSON.stringify(response));
         this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-        console.log(JSON.stringify(response));
-        console.log(this.currentUser);
         this.router.navigate(['./home']);
     })
     sessionStorage.setItem('logged', 'true');// Delete when API is connected
   }
 
-  Register(){
 
-  }
 
   // sendLogin() {
   //   this.currentUser.login(this.username, this.password).subscribe(
