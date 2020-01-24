@@ -13,11 +13,11 @@ export class NewsFeedComponent implements OnInit {
   constructor(private as: ArticlesService) { }
 
   ngOnInit() {
-    this.as.viewAll().subscribe(
+    this.as.getTopHeadlines().subscribe(
       (response: any) => {
         this.articles = response.articles;
       });
   }
 
-  panelOpenState = true;
+  panelOpenState = true; // Necessary for ng-materials accordian components
 }
