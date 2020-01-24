@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameScheduleComponent } from './../game-schedules/game-schedules.component';
+import { GameSchedulesComponent } from './../game-schedules/game-schedules.component';
 import { NewsFeedComponent } from './../news-feed/news-feed.component';
 
 @Component({
