@@ -16,7 +16,7 @@ export class LoginFormComponent implements OnInit {
   password : string = '' ;
 
   constructor(private router: Router, private us: UserService) { }
-
+  
   ngOnInit() {
   }
   loginToggle: boolean = true;
