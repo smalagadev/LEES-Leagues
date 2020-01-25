@@ -23,13 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   // true = Login, false = Register
-  private _loginToggle: boolean = true;
-  public get loginToggle(): boolean {
-    return this._loginToggle;
-  }
-  public set loginToggle(value: boolean) {
-    this._loginToggle = value;
-  }
+  loginToggle: boolean = true;
 
   toggleForm():void{
     this.loginToggle = !this.loginToggle;
