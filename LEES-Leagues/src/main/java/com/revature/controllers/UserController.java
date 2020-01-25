@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.revature.models.LoginTemplate;
 import com.revature.models.User;
 import com.revature.service.UserService;
 
@@ -48,15 +49,22 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(u);
 	}
 	
-	@GetMapping(value="/users/login")
+	@PostMapping(value="/users/login")
 	@ResponseBody
-	public ResponseEntity<User> login(@PathVariable("username") String username, @PathVariable("password") String password){
-		User u = UserService.login(username, password);
+	public ResponseEntity<User> login(@RequestBody LoginTemplate user){
+		User u = UserService.login(user.getUsername(), user.getPassword());
 		if(u == null) {
 			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 		}
 		
 		return ResponseEntity.status(HttpStatus.OK).body(u);
+	}
+	
+	@PostMapping(value="/users/logout")
+	@ResponseBody
+	public ResponseEntity<Void> logout() {
+		UserService.logout();
+		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 	@PutMapping(value="/users")
 	@ResponseBody

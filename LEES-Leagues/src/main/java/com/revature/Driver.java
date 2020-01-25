@@ -65,11 +65,11 @@ public class Driver {
 		
 		LeagueDaoImpl ldao = (LeagueDaoImpl) ac.getBean("leagueDao");
 		
-		ldao.save(new League("National Basketball League", 1));
-		ldao.save(new League("National Football League", 2));
-		ldao.save(new League("Major League Baseball", 3));
-		ldao.save(new League("National Hockey League", 4));
-		ldao.save(new League("Major League Soccer", 5));
+		ldao.save(new League("National Basketball League", new Sport()));
+		ldao.save(new League("National Football League", new Sport()));
+		ldao.save(new League("Major League Baseball", new Sport()));
+		ldao.save(new League("National Hockey League", new Sport()));
+		ldao.save(new League("Major League Soccer", new Sport()));
 		
 		SportDaoImpl sdao = (SportDaoImpl) ac.getBean("sportDao");
 		

@@ -47,8 +47,13 @@ public class UserService {
 		return udao.delete(u);
 	}
 	
-	public void setUserDao(UserDao udao) {
-		UserService.udao = udao;
+	public static void logout() {
+		udao.logout();
+	}
+
+	public void setUserDao(UserDao dao) {
+		this.udao = dao;
+		
 	}
 
 }
