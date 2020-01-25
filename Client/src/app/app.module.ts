@@ -8,6 +8,8 @@ import { MatTabsModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +54,7 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
     MatExpansionModule,
     MatListModule,
     HttpClientModule
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
