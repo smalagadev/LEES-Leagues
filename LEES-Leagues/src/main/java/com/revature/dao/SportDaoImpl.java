@@ -23,6 +23,12 @@ public class SportDaoImpl implements SportDao {
 		Session s = sf.getCurrentSession();
 		return (List<Sport>) s.createCriteria(Sport.class).list();
 	}
+	
+	@Override
+	public Sport getBySportName(String sportName) {
+		Session s = sf.getCurrentSession();
+		return s.get(Sport.class, sportName);
+	}
 
 	@Override
 	public Sport getBySportId(int id) {
@@ -31,9 +37,10 @@ public class SportDaoImpl implements SportDao {
 	}
 
 	@Override
-	public void save(Sport sport) {
+	public boolean save(Sport sport) {
 		Session s = sf.getCurrentSession();
 		s.save(sport);
+		return true;
 	}
 
 }
