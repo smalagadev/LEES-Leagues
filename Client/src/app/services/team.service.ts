@@ -2,14 +2,24 @@ import { Team } from './../models/team';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeamService {
-  baseUrl:string = "http://localhost:8080/LEES-Leagues";
+  baseUrl: string = "http://localhost:8080/LEES-Leagues";
+  news_api_key: string = environment.news_api_key;
 
   constructor(private http: HttpClient) { }
+
+  getTeamGameSchedule(team_api_id: ){
+    return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=${team_api_id}`);
+  }
+
+  getTeamNews(team_name: String){
+    return this.http.get(`https://newsapi.org/v2/everything?q=${team_name}&apiKey=${this.news_api_key}`);
+  }
 
   getByTeamName(teamName: string) : Observable<Team>{
       return this.http.get<Team>(this.baseUrl + '/team' + teamName);
