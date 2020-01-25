@@ -1,6 +1,8 @@
 package com.revature.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
@@ -12,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -35,8 +38,19 @@ public class League implements Serializable {
 	@JoinColumn(name="sport_fk")
 	private Sport sportHolder;
 
+	@OneToMany(mappedBy="leagueHolder", fetch=FetchType.LAZY)
+	private List<Team> teamList = new ArrayList<>();
+	
 	public League() {
 		super();
+	}
+	
+	public League(int leagueId, String leagueName, Sport sportHolder, List<Team> teamList) {
+		super();
+		this.leagueId = leagueId;
+		this.leagueName = leagueName;
+		this.sportHolder = sportHolder;
+		this.teamList = teamList;
 	}
 
 	public League(int leagueId, String leagueName, Sport sportHolder) {
@@ -81,10 +95,18 @@ public class League implements Serializable {
 	public void setSportHolder(Sport sportHolder) {
 		this.sportHolder = sportHolder;
 	}
+	
+	public List<Team> getTeamList() {
+		return teamList;
+	}
+
+	public void setTeamList(List<Team> teamList) {
+		this.teamList = teamList;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(leagueId, leagueName, sportHolder);
+		return Objects.hash(leagueId, leagueName, sportHolder, teamList);
 	}
 
 	@Override
@@ -97,12 +119,13 @@ public class League implements Serializable {
 		}
 		League other = (League) obj;
 		return leagueId == other.leagueId && Objects.equals(leagueName, other.leagueName)
-				&& Objects.equals(sportHolder, other.sportHolder);
+				&& sportHolder == other.sportHolder && Objects.equals(teamList, other.teamList);
 	}
 
 	@Override
 	public String toString() {
-		return "League [leagueId=" + leagueId + ", leagueName=" + leagueName + ", sportHolder=" + sportHolder + "]";
+		return "League [leagueId=" + leagueId + ", leagueName=" + leagueName + ", sportHolder=" + sportHolder
+				+ ", teamList=" + teamList + "]";
 	}
 	
 }

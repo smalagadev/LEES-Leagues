@@ -18,12 +18,16 @@ public class LeagueService {
 		return ldao.getAllLeagues();
 	}
 	
+	public static League getByLeagueName(String leagueName) {
+		return ldao.getByLeagueName(leagueName);
+	}
+	
 	public static League getByLeagueId(int id) {
 		return ldao.getByLeagueId(id);
 	}
 	
-	public static void save(League league) {
-		
+	public static boolean save(League league) {
+		return ldao.save(league);
 	}
 	
 	public void setLeagueDao(LeagueDao ldao) {
