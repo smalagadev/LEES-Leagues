@@ -7,6 +7,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -19,11 +21,14 @@ import com.revature.models.User;
 
 @Repository
 public class UserDaoImpl implements UserDao {
+
+	private static Logger logger = LogManager.getLogger(UserDaoImpl.class);
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
+	@Transactional
 	public User login(String username, String password) {
 		User user = getByUsername(username);
 		if(user == null) {
@@ -104,10 +109,20 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
+	@Transactional
 	public boolean delete(User u) {
 		Session s = sessionFactory.getCurrentSession();
 		s.delete(u);
 		return true;
+	}
+
+
+	@Override
+	@Transactional
+	public void logout() {
+		Session s = sessionFactory.getCurrentSession();
+		s.clear();
+		
 	} 
 	
 }

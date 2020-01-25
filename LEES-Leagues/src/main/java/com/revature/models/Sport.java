@@ -4,8 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+@Entity
+@Table(name="Sport")
+@Component
 public class Sport implements Serializable {
 
 	private static final long serialVersionUID = -100429540491249344L;

@@ -5,13 +5,20 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table(name="League")
+@Component
 public class League implements Serializable {
 
 	private static final long serialVersionUID = -4093820475112630048L;
@@ -26,13 +33,13 @@ public class League implements Serializable {
 	
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="sport_fk")
-	private int sportHolder;
+	private Sport sportHolder;
 
 	public League() {
 		super();
 	}
 
-	public League(int leagueId, String leagueName, int sportHolder) {
+	public League(int leagueId, String leagueName, Sport sportHolder) {
 		super();
 		this.leagueId = leagueId;
 		this.leagueName = leagueName;
@@ -45,7 +52,7 @@ public class League implements Serializable {
 		this.leagueName = leagueName;
 	}
 
-	public League(String leagueName, int sportHolder) {
+	public League(String leagueName, Sport sportHolder) {
 		super();
 		this.leagueName = leagueName;
 		this.sportHolder = sportHolder;
@@ -67,11 +74,11 @@ public class League implements Serializable {
 		this.leagueName = leagueName;
 	}
 
-	public int getSportHolder() {
+	public Sport getSportHolder() {
 		return sportHolder;
 	}
 
-	public void setSportHolder(int sportHolder) {
+	public void setSportHolder(Sport sportHolder) {
 		this.sportHolder = sportHolder;
 	}
 
