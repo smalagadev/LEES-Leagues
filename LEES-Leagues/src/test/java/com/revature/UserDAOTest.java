@@ -34,14 +34,14 @@ public class UserDAOTest {
 	}
 	
 	@Test
-	public static void testMockCreation() {
+	public void testMockCreation() {
 		assertNotNull(service);
 		assertNotNull(dao);
 		assertNotNull(User);
 	}
 	
 	@Test
-	public static void testfindAll() {
+	public void testfindAll() {
 	List<User> list = new ArrayList<>();
 	list.add(new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com"));
 	list.add(new User("Stefanno", "Malaga", "smalagadev", "password", "smalaga@revature.com"));
@@ -53,7 +53,7 @@ public class UserDAOTest {
 	}
 	
 	@Test
-	public static void testGetByUserId() {
+	public void testGetByUserId() {
 		User u = new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com");
 		when(dao.getById(1)).thenReturn(u);
 		User result = UserService.getById(1);
@@ -62,7 +62,7 @@ public class UserDAOTest {
 	}
 	
 	@Test
-	public static void testGetByUsername() {
+	public void testGetByUsername() {
 		User u = new User("Lawrence", "Ross", "lmr608", "password", "lross@revature.com");
 		when(dao.getByUsername("lmr608")).thenReturn(u);
 		User result = UserService.getByUsername("lmr608");
@@ -71,22 +71,26 @@ public class UserDAOTest {
 	}
 	
 	//@Test
-	public static void testLogin() {
+	public void testLogin() {
+		
+	}
+	
+	@Test
+	public void testSave() {
+		User newUser = new User("Elijah", "Jefferson", "jeffersone9", "password", "ejefferson@revature.com");
+        when(dao.save(newUser)).thenReturn(true);
+        boolean result = UserService.save(newUser);
+        verify(dao).save(newUser);
+		assertNotNull(result);
+	}
+	
+	//@Test
+	public void testUpdate() {
 		
 	}
 	
 	//@Test
-	public static void testSave() {
-		
-	}
-	
-	//@Test
-	public static void testUpdate() {
-		
-	}
-	
-	//@Test
-	public static void testDelete() {
+	public void testDelete() {
 		
 	}
 

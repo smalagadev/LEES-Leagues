@@ -36,14 +36,14 @@ public class TeamDAOTest {
 	}
 	
 	@Test
-	public static void testMockCreation() {
+	public void testMockCreation() {
 		assertNotNull(service);
 		assertNotNull(dao);
 		assertNotNull(team);
 	}
 	
 	@Test
-	public static void testGetAllTeams() {
+	public void testGetAllTeams() {
 	List<Team> list = new ArrayList<>();
 	list.add(new Team(1,"Atlanta","Hawks",null));
 	list.add(new Team(2,"Boston","Celtics",null));
@@ -55,7 +55,7 @@ public class TeamDAOTest {
 	}
 	
 	@Test
-	public static void testGetByTeamId() {
+	public void testGetByTeamId() {
 		Team t = new Team(1, "Atlanta", "Hawks", null);
 		when(dao.getByTeamId(1)).thenReturn(t);
 		Team result = TeamService.getByTeamId(1);
@@ -64,7 +64,7 @@ public class TeamDAOTest {
 	}
 	
 	@Test
-	public static void testGetByUserId() {
+	public void testGetByUserId() {
 		List<Team> list = new ArrayList<Team>();
 		list.add(new Team(1, "Atlanta", "Hawks"));
 		list.add(new Team(2, "Boston", "Celtics"));
@@ -75,9 +75,13 @@ public class TeamDAOTest {
 		assertFalse(result.isEmpty());
 	}
 	
-	//@Test
-	public static void testSave() {
-		
+	@Test
+	public void testSave() {
+		Team newTeam = new Team(3, "Charlotte", "Hornets");
+        when(dao.save(newTeam)).thenReturn(true);
+        boolean result = TeamService.save(newTeam);
+        verify(dao).save(newTeam);
+		assertNotNull(result);
 	}
 
 }
