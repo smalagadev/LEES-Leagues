@@ -11,6 +11,12 @@ app-registration-form{
   justify-content: center;
   align-items: center;
 } */
+P.blocktext {
+  margin-left: auto;
+  margin-right: auto;
+  width: 30em
+}
+
 mat-card {
   max-width: 400px;
   margin: 2em auto;
