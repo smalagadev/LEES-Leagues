@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, FormControl, FormGroup} from '@angular/forms';
-import {MatTabsModule} from '@angular/material';
+import { MatTabsModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +47,7 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
     CustomMaterialModule,
     FormsModule,
     MatTabsModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
