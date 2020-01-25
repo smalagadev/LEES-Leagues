@@ -53,7 +53,7 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
     MatTabsModule,
     MatExpansionModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
     MatTableModule,
   ],
   providers: [],
