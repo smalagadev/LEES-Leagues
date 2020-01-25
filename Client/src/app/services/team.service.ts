@@ -13,12 +13,16 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
-  getTeamGameSchedule(team_api_id: ){
+  getTeamGameSchedule(team_api_id){
     return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=${team_api_id}`);
   }
 
-  getTeamNews(team_name: String){
+  getTeamNews(team_name: string){
     return this.http.get(`https://newsapi.org/v2/everything?q=${team_name}&apiKey=${this.news_api_key}`);
+  }
+
+  getTeamRoster(team_name: string){
+    return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?t=${team_name}`);
   }
 
   getByTeamName(teamName: string) : Observable<Team>{
