@@ -1,16 +1,18 @@
+  <mat-card>
   <mat-card-content>
+    
       <form class="example-form">
-          <table class="example-full-width" cellspacing="0">
+          <table class="full-width-input" cellspacing="0">
               <tr>
                   <td>
-                      <mat-form-field appearance="fill" class="example-full-width">
+                      <mat-form-field appearance="fill" class="full-width-input">
                           <input matInput  placeholder="Username" [(ngModel)]="username" name="username" required>
                       </mat-form-field>
                   </td>
               </tr>
               <tr>
                   <td>
-                      <mat-form-field appearance="fill" class="example-full-width">
+                      <mat-form-field appearance="fill" class="full-width-input">
                   <input type= "password" matInput #input maxlength="10"  placeholder="Password" [(ngModel)]="password" name="password" required>
                   <mat-hint MatHint.align="start"> {{ input.value.length || 0 }} /10</mat-hint>
                   </mat-form-field>
@@ -23,3 +25,4 @@
   <mat-card-actions>
       <button mat-raised-button (click)="login()" color="primary">Login</button>
   </mat-card-actions>
+  

@@ -22,6 +22,7 @@ export class RegistrationFormComponent implements OnInit {
   // }
   ngOnInit() {
   }
+  
   newUser() {
     if(this.password != this.confirmpass){
       document.getElementById("warning").innerHTML = "Your passwords do not match, please try again.";

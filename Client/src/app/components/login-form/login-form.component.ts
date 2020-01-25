@@ -16,10 +16,14 @@ export class LoginFormComponent implements OnInit {
   password : string = '' ;
 
   constructor(private router: Router, private us: UserService) { }
-
+  
   ngOnInit() {
   }
+  loginToggle: boolean = true;
 
+  toggleForm():void{
+    this.loginToggle = !this.loginToggle;
+  }
 
   login(){
     this.us.login(this.username, this.password).subscribe(

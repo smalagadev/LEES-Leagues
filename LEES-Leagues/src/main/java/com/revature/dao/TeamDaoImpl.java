@@ -25,11 +25,10 @@ public class TeamDaoImpl implements TeamDao {
 		return (List<Team>) s.createCriteria(Team.class).list();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public List<Team> getByTeamId(int id) {
+	public Team getByTeamId(int id) {
 		Session s = sf.getCurrentSession();
-		return (List<Team>) s.get(Team.class, id);
+		return s.get(Team.class, id);
 	}
 
 	@SuppressWarnings("unchecked")

@@ -1,0 +1,8 @@
+.angular-logo {
+    margin: 0 9px 8px 0;
+    height: 95px;
+    vertical-align: bottom;
+}
+.fill-remaining-space {
+  flex-grow: 2 2 auto;
+}

@@ -9,7 +9,9 @@ import { EditTeamsComponent } from './../edit-teams/edit-teams.component';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit {
-
+submit(){
+  
+}
   constructor() { }
 
   ngOnInit() {
