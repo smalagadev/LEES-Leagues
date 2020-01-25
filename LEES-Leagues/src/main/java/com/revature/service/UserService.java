@@ -50,10 +50,13 @@ public class UserService {
 	public static void logout() {
 		udao.logout();
 	}
+<<<<<<< HEAD
+=======
 
 	public void setUserDao(UserDao dao) {
 		this.udao = dao;
 		
 	}
+>>>>>>> master
 
 }
