@@ -1,8 +1,9 @@
 
 import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-
 import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-team-search',
@@ -14,11 +15,12 @@ export class TeamSearchComponent implements OnInit {
   // userName: string = " ";
   id: BigInteger;
   response: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
     if(sessionStorage.getItem('currentUser') === null){
       this.router.navigate(['/']);
+    }
   }
 searchById(){
   // this.http.get('https://api.github.com/users/' + this.userName)

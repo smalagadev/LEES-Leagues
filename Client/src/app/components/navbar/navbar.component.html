@@ -1,13 +1,16 @@
 <mat-toolbar color="primary">
-        <span class = "example-fill remaining space">
+        <span class = "mat-button-wrapper remaining space">
             <img src="\assets\e413d523-be16-47bf-9199-b71673ee7c41_200x200.png" class="angular-logo">
-        </span>       
-                <a mat-button [routerLink]="'/'">Login or Register</a>
-                <a mat-button [routerLink]="'/home'"> Home </a>
-                <a mat-button [routerLink]="'/league'"> League </a>
-                <a mat-button [routerLink]="'/league_search'"> League Search </a>
-                <a mat-button [routerLink]="'/team'"> Team </a>
-                <a mat-button [routerLink]="'/team_search'"> Team Search </a>
-                <a mat-button [routerLink]="'/settings'"> Settings </a>
-                <a mat-button (click)="logout()"> Logout </a>
+        </span>
+        <div class="flex-spacer"></div>
+        <div class="">
+          <a mat-button [routerLink]="'/'">Login or Register</a>
+          <a mat-button [routerLink]="'/home'"> Home </a>
+          <a mat-button [routerLink]="'/league'"> League </a>
+          <a mat-button [routerLink]="'/league_search'"> League Search </a>
+          <a mat-button [routerLink]="'/team'"> Team </a>
+          <a mat-button [routerLink]="'/team_search'"> Team Search </a>
+          <a mat-button [routerLink]="'/settings'"> Settings </a>
+          <a mat-button (click)="logout()"> Logout </a>
+        </div>
 </mat-toolbar>

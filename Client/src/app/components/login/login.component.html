@@ -13,7 +13,7 @@
 
     <app-login-form *ngIf="loginToggle"></app-login-form>
     <app-registration-form *ngIf="!loginToggle"></app-registration-form>
-    <hr>
+
     <a mat-raised-button   (click)="toggleForm()">
       {{ loginToggle ? "Don't have an account? Click here to register." : "Already have an account? Log in." }}
     </a>

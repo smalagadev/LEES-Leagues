@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-league-search',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeagueSearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     if(sessionStorage.getItem('currentUser') === null){
       this.router.navigate(['/']);
+    }
   }
 
 }
