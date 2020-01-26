@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
 
   logout(): void{
     this.router.navigate(['/']);
+    sessionStorage.removeItem('currentUser');
   }
 
 }

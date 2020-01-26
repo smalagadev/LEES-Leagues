@@ -10,6 +10,8 @@ export class LeagueComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if(sessionStorage.getItem('currentUser') === null){
+      this.router.navigate(['/']);
   }
 
 }
