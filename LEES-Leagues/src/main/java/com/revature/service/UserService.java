@@ -51,4 +51,8 @@ public class UserService {
 		udao.logout();
 	}
 
+	public void setUserDao(UserDao dao) {
+		this.udao = dao;
+		
+	}
 }

@@ -24,12 +24,17 @@ public class TeamDaoImpl implements TeamDao {
 		Session s = sf.getCurrentSession();
 		return (List<Team>) s.createCriteria(Team.class).list();
 	}
-
-	@SuppressWarnings("unchecked")
+	
 	@Override
-	public List<Team> getByTeamId(int id) {
+	public Team getByTeamName(String teamName) {
 		Session s = sf.getCurrentSession();
-		return (List<Team>) s.get(Team.class, id);
+		return s.get(Team.class, teamName);
+	}
+
+	@Override
+	public Team getByTeamId(int id) {
+		Session s = sf.getCurrentSession();
+		return s.get(Team.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -41,9 +46,10 @@ public class TeamDaoImpl implements TeamDao {
 	
 	@Override
 	@Transactional
-	public void save(Team t) {
+	public boolean save(Team t) {
 		Session s = sf.getCurrentSession();
 		s.save(t);
+		return true;
 	}
 	
 }

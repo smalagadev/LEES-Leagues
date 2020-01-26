@@ -1,23 +1,24 @@
+  <mat-card>
   <mat-card-content>
       <form class="registration-form">
-          <table class="full-width" cellspacing="0">
+          <table class="full-width-input" cellspacing="0">
               <tr>
                   <td>
-                      <mat-form-field  appearance="fill" class="full-width">
+                      <mat-form-field  appearance="fill" class="full-width-input">
                           <input matInput placeholder="FirstName" [(ngModel)]="firstname" name="firstname" required>
                       </mat-form-field>
                   </td>
               </tr>
               <tr>
                   <td>
-                      <mat-form-field appearance="fill" class="full-width">
+                      <mat-form-field appearance="fill" class="full-width-input">
                   <input matInput placeholder="LastName" [(ngModel)]="lastname" name="lastname" required>
                   </mat-form-field></td>
               </tr>
               <tr>
                   <td>
 
-                      <mat-form-field appearance="fill" class="full-width">
+                      <mat-form-field appearance="fill" class="full-width-input">
                   <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
                   </mat-form-field>
 
@@ -25,21 +26,21 @@
               </tr>
               <tr>
                   <td>
-                      <mat-form-field appearance="fill" class="full-width">
+                      <mat-form-field appearance="fill" class="full-width-input">
                           <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
                       </mat-form-field>
                   </td>
               </tr>
               <tr>
                   <td>
-                      <mat-form-field hintLabel="Max 10 characters" appearance="fill" class="full-width">
+                      <mat-form-field hintLabel="Max 10 characters" appearance="fill" class="full-width-input">
                   <input type="password" matInput #input maxlength="10" placeholder="Password" [(ngModel)]="password" name="password" required>
                   <mat-hint align="end">{{input.value.length || 0}}/10</mat-hint>
                   </mat-form-field></td>
               </tr>
               <tr>
                   <td>
-                      <mat-form-field hintLabel="Max 10 characters" appearance="fill" class="full-width">
+                      <mat-form-field hintLabel="Max 10 characters" appearance="fill" class="full-width-input">
                           <input type="password" matInput #input maxlength="10" placeholder ="Re-enter Password" [(ngModel)]="confirmpass" name="password" required>
                           <mat-hint align="end">{{input.value.length || 0}}/10</mat-hint>
                       </mat-form-field>
