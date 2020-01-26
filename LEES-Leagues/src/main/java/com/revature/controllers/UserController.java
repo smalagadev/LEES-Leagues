@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,7 +65,7 @@ public class UserController {
 		UserService.logout();
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
-	@PutMapping(value="/users")
+	@PostMapping(value="/users/update")
 	@ResponseBody
 	public ResponseEntity<Boolean> update(@RequestBody User u){
 		return ResponseEntity.ok(UserService.update(u));

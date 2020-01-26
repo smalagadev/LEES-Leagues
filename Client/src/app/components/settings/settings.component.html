@@ -9,7 +9,7 @@
       <td>
 
 <mat-form-field appearance="outline" class="full-width-input">
-  <input matInput placeholder="First">
+  <input matInput placeholder="First" [(ngModel)] ="firstname" name="firstname">
 </mat-form-field>
       </td>
   </tr>
@@ -18,7 +18,7 @@
 <tr>
     <td>
 <mat-form-field appearance="outline" class="full-width-input">
-  <input matInput placeholder="Last">
+  <input matInput placeholder="Last" [(ngModel)]="lastname" name="lastname">
 </mat-form-field>
     </td>
   </tr>
@@ -27,14 +27,14 @@
   <td>
   <!-- Set interpolation, when clicked change to input -->
 <mat-form-field appearance="outline" class="full-width-input">
-  <input matInput placeholder="Email">
+  <input matInput placeholder="Email" [(ngModel)]="email" name="email">
 </mat-form-field>
 </td>
 </tr>
 <tr>
   <td>
 <mat-form-field appearance="outline" class="full-width-input">
-  <input matInput placeholder="Change Password" type="password" >
+  <input matInput placeholder="Change Password" type="password" [(ngModel)]="password" name="password">
 </mat-form-field>
   </td>
 </tr>
@@ -43,7 +43,7 @@
 
 </mat-card-content>
 <mat-card-actions>
-<button mat-raised-button (click)="submit()">Submit</button>
+<button mat-raised-button (click)="update()">Submit</button>
 </mat-card-actions>
 <app-edit-teams></app-edit-teams>
 
