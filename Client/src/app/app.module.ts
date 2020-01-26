@@ -28,7 +28,6 @@ import { EditTeamsComponent } from './components/edit-teams/edit-teams.component
 import { GameSchedulesComponent } from './components/game-schedules/game-schedules.component';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,6 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     EditTeamsComponent,
     GameSchedulesComponent,
     NewsFeedComponent,
-    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +58,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]
