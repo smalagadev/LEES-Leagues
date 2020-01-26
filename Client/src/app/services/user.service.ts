@@ -34,18 +34,24 @@ export class UserService {
   }
 
   findByName(username : string) : Observable<User>{
-    return this.http.get<User>('http://localhost:8080/LEES-Leagues/users/' + username);
+    return this.http.get<User>('http://localhost:8080/LEES-Leagues/users' + username);
   }
 
   findById(id : Number) : Observable<User>{
-    return this.http.get<User>('http://localhost:8080/LEES-Leagues/users/' + id);
+    return this.http.get<User>('http://localhost:8080/LEES-Leagues/users' + id);
   }
 
-  updateUser() : Observable<boolean>{
+  updateUser(userId: number, username : string, firstName: string, lastName : string, password : string, email : string) : Observable<boolean>{
     let body : any = {
-
+      userId : userId,
+      firstName : firstName,
+      lastName : lastName,
+      username : username,
+      password : password,
+      email : email
     }
-    return this.http.put<boolean>('http://localhost:8080/LEES-Leagues/users', body);
+    console.log(body);
+    return this.http.post<boolean>('http://localhost:8080/LEES-Leagues/users/update', body);
   }
 
 }

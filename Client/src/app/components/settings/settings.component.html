@@ -2,24 +2,24 @@
 <h3>Username</h3>
 <h3>First name</h3>
 <mat-form-field>
-  <input matInput placeholder="First">
+  <input matInput placeholder="First" [(ngModel)] = "firstname" name="firstname">
 </mat-form-field>
 <!-- Set interpolation, when clicked change to input -->
 <h3>Last name</h3>
 <mat-form-field>
-  <input matInput placeholder="Last">
+  <input matInput placeholder="Last" [(ngModel)] = "lastname" name="lastname">
 </mat-form-field>
 <!-- Set interpolation, when clicked change to input -->
 <h3>Email</h3>
 <!-- Set interpolation, when clicked change to input -->
 <mat-form-field>
-  <input matInput placeholder="Email">
+  <input matInput placeholder="Email" [(ngModel)]="email" name="email">
 </mat-form-field>
 
 <mat-form-field>
-  <input matInput placeholder="Change Password" type="password" >
+  <input matInput placeholder="Change Password" type="password" [(ngModel)] ="password" name="passowrd">
 </mat-form-field>
 
-<button type="button" mat-button>Submit</button>
+<button type="button" mat-button (click)="update()">Submit</button>
 
 <app-edit-teams></app-edit-teams>
