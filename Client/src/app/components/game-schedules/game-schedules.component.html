@@ -23,3 +23,19 @@
 <mat-list role="list" *ngFor="let g of gameSchedule">
   <mat-list-item role="listitem">{{ g.dateEventLocal }} | {{ g.strTimeLocal }} - {{ g.strEventAlternate }}</mat-list-item>
 </mat-list>
+
+<mat-paginator #paginator [pageSize]="pageSize" 
+                          [pageSizeOptions]="[5, 10]" 
+                          [showFirstLastButtons]="true" 
+                          [length]="totalSize"
+                          [pageIndex]="currentPage" 
+                          (page)="pageEvent = handlePage($event)">
+</mat-paginator>
+
+
+
+<!-- <div class="card-body">
+        <div *ngFor="let g of gameSchedule">{{item.name}}</div>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+<jw-pagination [items]="gameSchedule" (changePage)="onChangePage($event)"></jw-pagination> -->
