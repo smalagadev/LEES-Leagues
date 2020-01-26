@@ -11,15 +11,15 @@ import { Tweet } from './../../models/tweet';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
-  team_api_id: any;
   articles: Article[] = [];
   games: Object;
   tweets: Tweet[] = [];
+  team_api_id: Number;
 
   constructor(private as: ArticlesService, private te: TeamService, private tw: TwitterService) { }
 
   ngOnInit() {
-    this.as.getByTopic(this.team_api_id).subscribe(
+    this.as.getByTopic('anything').subscribe(
       (response: any) => {
       this.articles = response.articles;
     });
@@ -32,7 +32,7 @@ export class TeamComponent implements OnInit {
       this.games = response.games;
       console.log(this.games);
     });
-    this.tw.getTweetsByTeam(this.team_api_id).subscribe(
+    this.tw.getTweetsByTeam('anything').subscribe(
       (response: any) => {
         this.tweets = response.tweets;
       }

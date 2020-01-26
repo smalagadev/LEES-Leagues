@@ -11,14 +11,13 @@ export class TeamService {
   baseUrl: string = "http://localhost:8080/LEES-Leagues";
   news_api_key: string = environment.news_api_key;
 
-
   constructor(private http: HttpClient) { }
 
-  getTeamRecentGames(team_api_id){
+  getTeamRecentGames(team_api_id: Number){
     return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=${team_api_id}`);
   }
 
-  getTeamUpcomingGames(team_api_id){
+  getTeamUpcomingGames(team_api_id: Number){
     return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=${team_api_id}`);
   }
 
