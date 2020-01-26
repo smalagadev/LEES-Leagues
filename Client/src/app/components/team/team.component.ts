@@ -11,35 +11,33 @@ import { Tweet } from './../../models/tweet';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
-  team: {
-    name: string;
-  }
+  team_api_id: any;
   articles: Article[] = [];
   games: Object;
   tweets: Tweet[] = [];
 
-  constructor(private as: ArticlesService, private tes: TeamService, private tws: TwitterService) { }
+  constructor(private as: ArticlesService, private te: TeamService, private tw: TwitterService) { }
 
   ngOnInit() {
-    this.as.getByTopic(this.team.name).subscribe(
+    this.as.getByTopic(this.team_api_id).subscribe(
       (response: any) => {
       this.articles = response.articles;
     });
-    this.tes.getTeamRecentGames(this.team.name).subscribe(
+    this.te.getTeamRecentGames(this.team_api_id).subscribe(
       (response: any) => {
       this.games = response.games;
     });
-    this.tes.getTeamUpcomingGames(this.team.name).subscribe(
+    this.te.getTeamUpcomingGames(this.team_api_id).subscribe(
       (response: any) => {
       this.games = response.games;
       console.log(this.games);
     });
-    this.tws.getTweetsByTeam(this.team.name).subscribe(
+    this.tw.getTweetsByTeam(this.team_api_id).subscribe(
       (response: any) => {
         this.tweets = response.tweets;
       }
     )
   }
 
-  panelOpenState = true;
+  //panelOpenState = true;
 }

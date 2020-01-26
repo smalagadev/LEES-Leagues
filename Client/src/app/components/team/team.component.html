@@ -1,35 +1,40 @@
-<h1>{{ team }}</h1>
+<h1></h1>
 
 <div>
-    <h2>Recent Scores</h2>
+    <h3>Recent Games</h3>
         <ul *ngIf="games">
             <li *ngFor="let game of games">
-                <p class="name">{{ game.strEvent }}</p>
-                <p class="name">{{ game.strHomeTeam }}</p>
-                <p class="name">{{ game.strAwayTeam }}</p>
-                <p class="name">{{ game.intHomeScore }}</p>
-                <p class="name">{{ game.intAwayScore }}</p>
-                <p class="name">{{ game.dateEvent }}</p>
+                <p class="events">{{ game.strEvent }}</p>
+                <p class="events">{{ game.strHomeTeam }}</p>
+                <p class="events">{{ game.strAwayTeam }}</p>
+                <p class="events">{{ game.intHomeScore }}</p>
+                <p class="events">{{ game.intAwayScore }}</p>
+                <p class="events">{{ game.dateEvent }}</p>
             </li>
         </ul>
 
     <h3>Upcoming Games</h3>
         <ul *ngIf="games">
             <li *ngFor="let game of games">
-                <p class="strEvent">{{ game.name }}</p>
-                <p class="strHomeTeam">{{ game.name }}</p>
-                <p class="strAwayTeam">{{ game.name }}</p>
-                <p class="dateEvent">{{ game.name}}</p>
+                <p class="events">{{ game.strEvent }}</p>
+                <p class="events">{{ game.strHomeTeam }}</p>
+                <p class="events">{{ game.strAwayTeam }}</p>
+                <p class="events">{{ game.dateEvent}}</p>
             </li>
         </ul>
 </div>
 
 <div>
-    <h4>News Feed</h4>
+    <h3>Roster</h3>
+
+</div>
+
+<div>
+    <h3>News Feed</h3>
         
 </div>
 
 <div>
-    <h5>Twitter Feed</h5>
-    <a class="twitter-timeline" href="https://api.twitter.com/1.1/search/tweets.json?q={team}"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <h3>Twitter Feed</h3>
+
 </div>
