@@ -1,25 +1,49 @@
-<h2>Settings</h2>
-<h3>Username</h3>
-<h3>First name</h3>
-<mat-form-field>
-  <input matInput placeholder="First" [(ngModel)] = "firstname" name="firstname">
+<mat-card>
+  <mat-card-content>
+    <h2>Settings</h2>
+    <h3>Username</h3>
+    <form class = "example-form">
+
+<table class="full-width-input" cellspacing="0">
+  <tr>
+      <td>
+
+<mat-form-field appearance="outline" class="full-width-input">
+  <input matInput placeholder="First" [(ngModel)] ="firstname" name="firstname">
 </mat-form-field>
+      </td>
+  </tr>
 <!-- Set interpolation, when clicked change to input -->
-<h3>Last name</h3>
-<mat-form-field>
-  <input matInput placeholder="Last" [(ngModel)] = "lastname" name="lastname">
+
+<tr>
+    <td>
+<mat-form-field appearance="outline" class="full-width-input">
+  <input matInput placeholder="Last" [(ngModel)]="lastname" name="lastname">
 </mat-form-field>
+    </td>
+  </tr>
 <!-- Set interpolation, when clicked change to input -->
-<h3>Email</h3>
-<!-- Set interpolation, when clicked change to input -->
-<mat-form-field>
+<tr>
+  <td>
+  <!-- Set interpolation, when clicked change to input -->
+<mat-form-field appearance="outline" class="full-width-input">
   <input matInput placeholder="Email" [(ngModel)]="email" name="email">
 </mat-form-field>
-
-<mat-form-field>
-  <input matInput placeholder="Change Password" type="password" [(ngModel)] ="password" name="passowrd">
+</td>
+</tr>
+<tr>
+  <td>
+<mat-form-field appearance="outline" class="full-width-input">
+  <input matInput placeholder="Change Password" type="password" [(ngModel)]="password" name="password">
 </mat-form-field>
+  </td>
+</tr>
+</table>
+</form>
 
-<button type="button" mat-button (click)="update()">Submit</button>
-
+</mat-card-content>
+<mat-card-actions>
+<button mat-raised-button (click)="update()">Submit</button>
+</mat-card-actions>
 <app-edit-teams></app-edit-teams>
+

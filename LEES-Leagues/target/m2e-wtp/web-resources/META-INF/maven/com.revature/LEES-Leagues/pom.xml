@@ -115,10 +115,9 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>com.thetransactioncompany</groupId>
-			<artifactId>cors-filter</artifactId>
-			<version>1.8</version>
+  			<groupId>com.thetransactioncompany</groupId>
+  			<artifactId>cors-filter</artifactId>
+  			<version>1.8</version>
 		</dependency>
-		
 	</dependencies>
 </project>

@@ -22,12 +22,13 @@ export class RegistrationFormComponent implements OnInit {
   // }
   ngOnInit() {
   }
+  
   newUser() {
     if(this.password != this.confirmpass){
       document.getElementById("warning").innerHTML = "Your passwords do not match, please try again.";
     } else {
       this.us.register(this.username, this.firstname, this.lastname, this.password, this.email).subscribe();
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }
   }
 

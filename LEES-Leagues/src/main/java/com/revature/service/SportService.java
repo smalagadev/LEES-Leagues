@@ -18,12 +18,16 @@ public class SportService {
 		return sdao.getAllSports();
 	}
 	
+	public static Sport getBySportName(String sportName) {
+		return sdao.getBySportName(sportName);
+	}
+	
 	public static Sport getBySportId(int id) {
 		return sdao.getBySportId(id);
 	}
 	
-	public static void save(Sport sport) {
-		
+	public static boolean save(Sport sport) {
+		return sdao.save(sport);
 	}
 	
 	public void setSportDao(SportDao sdao) {

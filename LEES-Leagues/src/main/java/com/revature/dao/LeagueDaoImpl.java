@@ -23,6 +23,12 @@ public class LeagueDaoImpl implements LeagueDao {
 		Session s = sf.getCurrentSession();
 		return (List<League>) s.createCriteria(League.class).list();
 	}
+	
+	@Override
+	public League getByLeagueName(String leagueName) {
+		Session s = sf.getCurrentSession();
+		return s.get(League.class, leagueName);
+	}
 
 	@Override
 	public League getByLeagueId(int id) {
@@ -31,9 +37,10 @@ public class LeagueDaoImpl implements LeagueDao {
 	}
 
 	@Override
-	public void save(League league) {
+	public boolean save(League league) {
 		Session s = sf.getCurrentSession();
 		s.save(league);
+		return true;
 	}
 
 }

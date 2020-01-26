@@ -29,16 +29,16 @@ export class SettingsComponent implements OnInit {
 
   update(){
     console.log(this.user);
-    if(this.password === undefined){
+    if(this.password === undefined || this.password===""){
       this.password = this.user.password;
     }
-    if(this.firstname === undefined){
+    if(this.firstname === undefined || this.firstname===""){
       this.firstname = this.user.firstName
     }
-    if(this.lastname === undefined){
+    if(this.lastname === undefined || this.lastname===""){
       this.lastname = this.user.lastName;
     }
-    if(this.email === undefined){
+    if(this.email === undefined || this.email===""){
       this.email = this.user.email;
     }
     this.us.updateUser(this.user.userId, this.user.username, this.firstname, this.lastname, this.password, this.email).subscribe();

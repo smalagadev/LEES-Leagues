@@ -19,6 +19,10 @@ public class TeamService {
 
 	}
 	
+	public static Team getByTeamName(String teamName) {
+		return tdao.getByTeamName(teamName);
+	}
+	
 	public static Team getByTeamId(int id) {
 		return tdao.getByTeamId(id);
 	}
@@ -27,8 +31,8 @@ public class TeamService {
 		return tdao.getByUserId(id);
 	}
 	
-	public static void save(Team team) {
-		
+	public static boolean save(Team team) {
+		return tdao.save(team);
 	}
 	
 	public void setTeamDao(TeamDao tdao) {
