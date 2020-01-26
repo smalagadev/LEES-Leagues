@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -59,10 +61,11 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(u);
 	}
 	
-	@PostMapping(value="/users/logout")
+	@GetMapping(value="/users/logout")
 	@ResponseBody
-	public ResponseEntity<Void> logout() {
+	public ResponseEntity<Void> logout(HttpSession session) {
 		UserService.logout();
+		session.invalidate();
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 	@PostMapping(value="/users/update")

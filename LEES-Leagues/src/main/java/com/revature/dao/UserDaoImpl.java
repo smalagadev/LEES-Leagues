@@ -120,6 +120,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	@Transactional
 	public void logout() {
+		System.out.println("I did log out");
 		Session s = sessionFactory.getCurrentSession();
 		s.clear();
 		

@@ -19,7 +19,9 @@ export class UserService {
   }
 
   logout(){
-    return this.http.post<void>('http://localhost:8080/LEES-Leagues/users/logout', {});
+    console.log("called logout");
+    sessionStorage.clear();
+    return this.http.get<void>('http://localhost:8080/LEES-Leagues/users/logout');
   }
 
   register(username: string, firstName: string, lastName: string, password : string, email: string) : Observable<boolean>{
