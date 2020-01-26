@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticlesService } from 'src/app/services/articles.service';
-import { TeamService } from 'src/app/services/team.service';
-import { TwitterService } from 'src/app/services/twitter.service';
+import { ArticlesService } from './../../services/articles.service';
+import { TeamService } from './../../services/team.service';
+import { TwitterService } from './../../services/twitter.service';
 import { Article } from './../../models/article';
 import { Tweet } from './../../models/tweet';
 
@@ -11,6 +11,9 @@ import { Tweet } from './../../models/tweet';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
+  team: {
+    name: string;
+  }
   articles: Article[] = [];
   games: Object;
   tweets: Tweet[] = [];
@@ -18,19 +21,20 @@ export class TeamComponent implements OnInit {
   constructor(private as: ArticlesService, private tes: TeamService, private tws: TwitterService) { }
 
   ngOnInit() {
-    this.as.getByTopic.subscribe(
+    this.as.getByTopic(this.team.name).subscribe(
       (response: any) => {
       this.articles = response.articles;
     });
-    this.tes.getTeamRecentGames.subscribe(
+    this.tes.getTeamRecentGames(this.team.name).subscribe(
       (response: any) => {
       this.games = response.games;
     });
-    this.tes.getTeamUpcomingGames.subscribe(
+    this.tes.getTeamUpcomingGames(this.team.name).subscribe(
       (response: any) => {
       this.games = response.games;
+      console.log(this.games);
     });
-    this.tws.getTweetsByTeam.subscribe(
+    this.tws.getTweetsByTeam(this.team.name).subscribe(
       (response: any) => {
         this.tweets = response.tweets;
       }

@@ -1,4 +1,4 @@
-<h1>{{ team }} Page</h1>
+<h1>{{ team }}</h1>
 
 <div>
     <h2>Recent Scores</h2>
@@ -16,19 +16,17 @@
     <h3>Upcoming Games</h3>
         <ul *ngIf="games">
             <li *ngFor="let game of games">
-                <p class="name">{{ game.strEvent }}</p>
-                <p class="name">{{ game.strHomeTeam }}</p>
-                <p class="name">{{ game.strAwayTeam }}</p>
-                <p class="name">{{ game.dateEvent }}</p>
+                <p class="strEvent">{{ game.name }}</p>
+                <p class="strHomeTeam">{{ game.name }}</p>
+                <p class="strAwayTeam">{{ game.name }}</p>
+                <p class="dateEvent">{{ game.name}}</p>
             </li>
         </ul>
 </div>
 
 <div>
     <h4>News Feed</h4>
-    <mat-list dense *ngFor="let a of articles">
-        <mat-list-item> <img src="{{ a.urlToImage }}" alt=""> {{ a.publishedAt }} | {{ a.title }} - {{ a.description }} <a href="{{ a.url }}" target="_blank">Continue reading...</a></mat-list-item>
-    </mat-list>
+        
 </div>
 
 <div>
