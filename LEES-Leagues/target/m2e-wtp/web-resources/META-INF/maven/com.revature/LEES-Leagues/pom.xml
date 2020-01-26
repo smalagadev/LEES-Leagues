@@ -115,17 +115,10 @@
 		</dependency>
 		
 		<dependency>
-<<<<<<< HEAD
   			<groupId>com.thetransactioncompany</groupId>
   			<artifactId>cors-filter</artifactId>
   			<version>1.8</version>
 		</dependency>
-=======
-			<groupId>com.thetransactioncompany</groupId>
-			<artifactId>cors-filter</artifactId>
-			<version>1.8</version>
-		</dependency>
-		
->>>>>>> master
+
 	</dependencies>
 </project>
