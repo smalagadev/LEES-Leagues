@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ArticlesService } from 'src/app/services/articles.service';
 import { TwitterService } from 'src/app/services/twitter.service';
 import { Article } from './../../models/article';
-<<<<<<< HEAD
 import { Router } from '@angular/router';
-
-=======
 import { Tweet } from '../../models/tweet';
->>>>>>> master
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
@@ -17,21 +13,7 @@ export class TeamComponent implements OnInit {
   articles: Article[] = [];
   tweets: Tweet[] = [];
 
-<<<<<<< HEAD
-  constructor(private as: ArticlesService, private router: Router) { }
-
-  ngOnInit() {
-
-    if(sessionStorage.getItem('currentUser') === null){
-      this.router.navigate(['/']);
-    }
-
-    // this.as.getByTopic().subscribe(
-    //   (response: any) => {
-    //   this.articles = response.articles;
-    // });
-=======
-  constructor(private as: ArticlesService, private ts: TwitterService) { }
+  constructor(private as: ArticlesService, private ts: TwitterService, private router: Router) { }
 
   ngOnInit() {
     /* this.as.getByTopic.subscribe(
@@ -43,7 +25,7 @@ export class TeamComponent implements OnInit {
         this.tweets = response.tweets;
       }
     ) */
->>>>>>> master
+
   }
 
   panelOpenState = true;
