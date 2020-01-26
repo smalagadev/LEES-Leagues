@@ -1,15 +1,9 @@
-<mat-list dense *ngFor="let a of articles">
- <mat-list-item> <img src="{{ a.urlToImage }}" alt=""> {{ a.publishedAt }} | {{ a.title }} - {{ a.description }} <a href="{{ a.url }}" target="_blank">Continue reading...</a></mat-list-item>
+<mat-list>
+ <mat-list-item  *ngFor="let a of articles">
+   <img matListAvatar src="{{ a.urlToImage }}" alt="">
+   <p matLine>{{ a.publishedAt }} - {{ a.title }}</p>
+   <p matLine>{{ a.description }}</p>
+   <p matLine align><a href="{{ a.url }}" target="_blank">Click here to read more.</a></p>
+   <mat-divider></mat-divider>
+ </mat-list-item>
 </mat-list>
-
-<!-- <mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-
-      </mat-panel-title>
-
-    </mat-expansion-panel-header>
-
-  </mat-expansion-panel>
-</mat-accordion> -->

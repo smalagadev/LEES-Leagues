@@ -11,13 +11,12 @@
 </div>
 
 <div>
-    <h3>Newsfeed</h3>
+    <h3>News Feed</h3>
     <mat-list dense *ngFor="let a of articles">
         <mat-list-item> <img src="{{ a.urlToImage }}" alt=""> {{ a.publishedAt }} | {{ a.title }} - {{ a.description }} <a href="{{ a.url }}" target="_blank">Continue reading...</a></mat-list-item>
     </mat-list>
 </div>
 
 <div>
-    <h4>Twitter Feed</h4>
-    
+    <a class="twitter-timeline" href="https://api.twitter.com/1.1/search/tweets.json?q={team}">{{ team }} Twitter Feed</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
