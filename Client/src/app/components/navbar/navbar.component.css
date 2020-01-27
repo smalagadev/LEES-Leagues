@@ -7,7 +7,7 @@
   flex-grow: 2 2 auto;
 }
 .navbar{
-  justify-content: space-between;
+  justify-content:space-between;
 }
 span{
   padding-right: 1rem;
