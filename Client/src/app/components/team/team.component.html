@@ -1,7 +1,13 @@
 <h1></h1>
 
-<div>
-    <h3>Recent Games</h3>
+    <!--<h3>Recent Games</h3>
+
+    <mat-card class ="tp-card">
+        <mat-list role="list" *ngFor="let event of events">
+          <mat-list-item role="listitem"><tr><td>{{ event.dateEventLocal }}|{{ event.strEventAlternate }}</mat-list-item>
+        </mat-list>
+    </mat-card>
+
         <ul>
             <li *ngFor="let event of events">
                 <p>{{ event.strEvent }}</p>
@@ -11,20 +17,16 @@
                 <p>{{ event.intAwayScore }}</p>
                 <p>{{ event.dateEvent }}</p>
             </li>
-        </ul>
+        </ul>-->
 
     <h3>Upcoming Games</h3>
-        <ul>
-            <li *ngFor="let event of events">
-                <p>{{ event.strEvent }}</p>
-                <p>{{ event.strHomeTeam }}</p>
-                <p>{{ event.strAwayTeam }}</p>
-                <p>{{ event.dateEvent}}</p>
-            </li>
-        </ul>
-</div>
 
-<div>
+    <mat-card class ="tp-card">
+        <mat-list role="list" *ngFor="let event of events">
+          <mat-list-item role="listitem"><tr><td>{{ event.dateEventLocal }}|{{ event.strEventAlternate }}</mat-list-item>
+        </mat-list>
+    </mat-card>
+
     <h3>Roster</h3>
     <ul>
         <li *ngFor="let p of player">
@@ -34,16 +36,17 @@
             <p>{{ p?.strWeight }}</p>
         </li>
     </ul>
-</div>
 
-<div>
     <h3>News Feed</h3>
-    <ul>
-        <li *ngFor="let article of articles">
-            <p>{{ article?.publishedAt }}</p>
-            <p>{{ article?.title }}</p>
-            <p>{{ article?.description }}</p>
-            <a class="site" href="{{ article.url }}">Click here to read more...</a>
-        </li>
-    </ul>
-</div>
+
+    <mat-card>
+    <mat-list>
+        <mat-list-item  *ngFor="let article of articles">
+            <img matListAvatar src="{{ article.urlToImage }}" alt="">
+            <p matLine>{{ article.publishedAt }} - {{ article.title }}</p>
+            <p matLine>{{ article.description }}</p>
+            <p matLine align><a href="{{ article.url }}" target="_blank">Click here to read more.</a></p>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+    </mat-card>

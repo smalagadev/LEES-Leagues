@@ -12,7 +12,7 @@ import { Tweet } from './../../models/tweet';
   styleUrls: ['./team.component.css']
 })
 export class TeamComponent implements OnInit {
-  articles: Article[] = [];
+  articles = [];
   events = [];
   tweets: Tweet[] = [];
   team_api_id = 134882;
@@ -50,5 +50,5 @@ export class TeamComponent implements OnInit {
     )*/
   }
 
-  //panelOpenState = true;
+  panelOpenState = true;
 }
