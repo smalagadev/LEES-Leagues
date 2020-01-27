@@ -11,7 +11,7 @@ export class GameSchedulesComponent implements OnInit {
   gameSchedule: any[] = [];
   columnsToDisplay = ['date-time', 'eventName'];
   
-  // dataSource = new MatTableDataSource<GameSchedulesService>(this.gameSchedule)
+  dataSource = new MatTableDataSource<GameSchedulesService>(this.gameSchedule)
 
   public pageSize = 5;
   public currentPage = 0;
