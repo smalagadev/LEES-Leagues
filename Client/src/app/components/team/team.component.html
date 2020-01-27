@@ -1,6 +1,4 @@
-<h1></h1>
-
-    <!--<h3>Recent Games</h3>
+    <!--<h2>Recent Games</h2>
 
     <mat-card class ="tp-card">
         <mat-list role="list" *ngFor="let event of events">
@@ -19,10 +17,23 @@
             </li>
         </ul>-->
 
-    <h3>Upcoming Games</h3>
+    <mat-card class ="tp-card">
+        <mat-card-header>
+            <mat-card-title>
+                <h2>Upcoming Games</h2>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-list role="list" *ngFor="let event of events">
+          <mat-list-item role="listitem"><tr><td>{{ event.dateEventLocal }}|{{ event.strEventAlternate }}</mat-list-item>
+        </mat-list>
+    </mat-card>
 
-<div>
-    <h2>Roster</h2>
+    <mat-card class ="tp-card" title="Roster">
+        <mat-card-header>
+            <mat-card-title>
+                <h2>Roster</h2>
+            </mat-card-title>
+        </mat-card-header>
     <mat-list>
      <mat-list-item *ngFor="let p of player">
        <img matListAvatar class="player-img" mat-card-image src="{{ p.strCutout }}" alt="{{ p.strPlayer }} cutout" alt="">
@@ -32,11 +43,14 @@
        <mat-divider></mat-divider>
      </mat-list-item>
     </mat-list>
-</div>
-
-    <h3>News Feed</h3>
+    </mat-card>
 
     <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <h2>News Feed</h2>
+            </mat-card-title>
+        </mat-card-header>
     <mat-list>
         <mat-list-item  *ngFor="let article of articles">
             <img matListAvatar src="{{ article.urlToImage }}" alt="">
