@@ -35,6 +35,7 @@ export class TeamComponent implements OnInit {
       (response: any) => {
       this.events = response.events;
     });
+
     this.te.getTeamRoster(this.team_name).subscribe(
         (response: any) => {
         this.player = response.player;
@@ -43,6 +44,7 @@ export class TeamComponent implements OnInit {
           console.log(this.player);
         }
     );
+    
     /*this.tw.getTweetsByTeam('anything').subscribe(
       (response: any) => {
         this.tweets = response.tweets;
@@ -50,5 +52,5 @@ export class TeamComponent implements OnInit {
     )*/
   }
 
-  panelOpenState = true;
+  //panelOpenState = true;
 }

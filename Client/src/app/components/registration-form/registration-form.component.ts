@@ -15,20 +15,30 @@ export class RegistrationFormComponent implements OnInit {
   lastname: string;
   email: string;
 
-  
+
   constructor(private us: UserService, private router: Router) { }
   // register(){
 
   // }
   ngOnInit() {
   }
-  
+
   newUser() {
     if(this.password != this.confirmpass){
       document.getElementById("warning").innerHTML = "Your passwords do not match, please try again.";
     } else {
-      this.us.register(this.username, this.firstname, this.lastname, this.password, this.email).subscribe();
-      this.router.navigate(['/home']);
+      this.us.register(this.username, this.firstname, this.lastname, this.password, this.email).subscribe(
+        (response: any) => {
+          if(response){
+            alert(`Your account has been created ${this.firstname}!`);
+            this.router.navigate(['/home']);
+          }
+          else{
+            alert("Your account was not created.");
+          }
+        }
+      );
+
     }
   }
 
