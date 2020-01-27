@@ -16,7 +16,7 @@ export class LoginFormComponent implements OnInit {
   password : string = '' ;
 
   constructor(private router: Router, private us: UserService) { }
-  
+
   ngOnInit() {
   }
   loginToggle: boolean = true;
@@ -31,19 +31,8 @@ export class LoginFormComponent implements OnInit {
         sessionStorage.setItem('currentUser', JSON.stringify(response));
         this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
         this.router.navigate(['./home']);
+        alert(`Welcome ${response.firstName} ${response.lastName}`);
     })
-    sessionStorage.setItem('logged', 'true');// Delete when API is connected
   }
 
-
-
-  // sendLogin() {
-  //   this.currentUser.login(this.username, this.password).subscribe(
-  //     (response:User) => {
-  //       sessionStorage.setItem('currentUser', JSON.stringify(response));
-  //       console.log(response);
-  //       this.router.navigate(['/home']);
-  //     }
-  //   )
-  // }
 }

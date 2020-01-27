@@ -28,10 +28,10 @@ public class Sport implements Serializable {
 	@Column(name="sport_name", nullable=false)
 	private String sportName;
 	
-	@OneToMany(mappedBy="sportHolder", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="sportHolder", fetch=FetchType.EAGER)
 	private List<League> leagueList = new ArrayList<>();
 
-	@OneToMany(mappedBy="sportHolder", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="sportHolder", fetch=FetchType.EAGER)
 	private List<Team> teamList = new ArrayList<>();
 
 	public Sport() {

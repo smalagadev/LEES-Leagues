@@ -34,11 +34,11 @@ public class League implements Serializable {
 	@Column(name="league_name", nullable=false)
 	private String leagueName;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinColumn(name="sport_fk")
 	private Sport sportHolder;
 
-	@OneToMany(mappedBy="leagueHolder", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="leagueHolder", fetch=FetchType.EAGER)
 	private List<Team> teamList = new ArrayList<>();
 	
 	public League() {

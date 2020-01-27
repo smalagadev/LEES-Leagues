@@ -2,13 +2,21 @@ package com.revature.service;
 
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
+
 import com.revature.dao.TeamDao;
 import com.revature.dao.TeamDaoImpl;
+import com.revature.dao.UserDao;
 import com.revature.models.Team;
 
+@Service
 public class TeamService {
 
-	private static TeamDao tdao = new TeamDaoImpl();
+	private static ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+	private static TeamDao tdao = (TeamDao) ac.getBean("teamDaoImpl");
+	
 
 	public TeamService() {
 		
