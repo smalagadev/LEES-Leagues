@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ArticlesService } from 'src/app/services/articles.service';
-import { TwitterService } from 'src/app/services/twitter.service';
+import { ArticlesService } from './../../services/articles.service';
+import { TeamService } from './../../services/team.service';
+import { TwitterService } from './../../services/twitter.service';
 import { Article } from './../../models/article';
-import { Tweet } from '../../models/tweet';
+import { Tweet } from './../../models/tweet';
+
+
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
@@ -10,21 +13,46 @@ import { Tweet } from '../../models/tweet';
 })
 export class TeamComponent implements OnInit {
   articles: Article[] = [];
+  events = [];
   tweets: Tweet[] = [];
+  team_api_id = 134882;
+  team_name = 'miami heat';
+  player = [];
 
-  constructor(private as: ArticlesService, private ts: TwitterService) { }
+  constructor(private as: ArticlesService, private te: TeamService, private tw: TwitterService) { }
 
   ngOnInit() {
-    /* this.as.getByTopic.subscribe(
+
+    /*this.as.getByTopic('anything').subscribe(
       (response: any) => {
       this.articles = response.articles;
-    });
-    this.ts.getTweetsByTeam.subscribe(
+    });*/
+    this.te.getTeamRecentGames(this.team_api_id).subscribe(
+      (response: any) => {
+      this.events = response.events;
+      console.log(this.events);
+    })
+    this.te.getTeamUpcomingGames(this.team_api_id).subscribe(
+      (response: any) => {
+      this.events = response.events;
+      /*data => {
+        this.player = data*/
+      console.log(this.events);
+    })
+    this.te.getTeamRoster(this.team_name).subscribe(
+        (response: any) => {
+        this.player = response.player;
+        /*data => {
+          this.player = data*/
+          console.log(this.player);
+        }
+    )
+    /*this.tw.getTweetsByTeam('anything').subscribe(
       (response: any) => {
         this.tweets = response.tweets;
       }
-    ) */
+    )*/
   }
 
-  panelOpenState = true;
+  //panelOpenState = true;
 }

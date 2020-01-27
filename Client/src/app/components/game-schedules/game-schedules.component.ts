@@ -8,9 +8,9 @@ import { PageEvent, MatTableDataSource } from '@angular/material';
   styleUrls: ['./game-schedules.component.css']
 })
 export class GameSchedulesComponent implements OnInit {
-  gameSchedule: any[] = [];
+  gameSchedule: any = [];
   columnsToDisplay = ['date-time', 'eventName'];
-  
+
   // dataSource = new MatTableDataSource<GameSchedulesService>(this.gameSchedule)
 
   public pageSize = 5;
@@ -24,7 +24,7 @@ export class GameSchedulesComponent implements OnInit {
 
   ngOnInit() {
     this.getArray();
-  
+
     // this.gss.getLeagueSchedule().subscribe(
     //   (response: any) => {
     //     console.log(response);
