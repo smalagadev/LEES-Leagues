@@ -13,7 +13,11 @@ export class TeamService {
 
   constructor(private http: HttpClient) { }
 
-  getTeamGameSchedule(team_api_id){
+  getTeamRecentGames(team_api_id: any){
+    return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/eventslast.php?id=${team_api_id}`);
+  }
+
+  getTeamUpcomingGames(team_api_id: any){
     return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=${team_api_id}`);
   }
 

@@ -1,22 +1,50 @@
-<h1>Team Page</h1>
+<h1></h1>
 
 <div>
-    <h2>Recent Scores</h2>
+    <h3>Recent Games</h3>
+        <ul>
+            <li *ngFor="let event of events">
+                <p>{{ event.strEvent }}</p>
+                <p>{{ event.strHomeTeam }}</p>
+                <p>{{ event.strAwayTeam }}</p>
+                <p>{{ event.intHomeScore }}</p>
+                <p>{{ event.intAwayScore }}</p>
+                <p>{{ event.dateEvent }}</p>
+            </li>
+        </ul>
 
+    <h3>Upcoming Games</h3>
+        <ul>
+            <li *ngFor="let event of events">
+                <p>{{ event.strEvent }}</p>
+                <p>{{ event.strHomeTeam }}</p>
+                <p>{{ event.strAwayTeam }}</p>
+                <p>{{ event.dateEvent}}</p>
+            </li>
+        </ul>
 </div>
 
 <div>
-    <h2>Upcoming Games</h2>
-    
-</div>
-
-<div>
-    <h3>News Feed</h3>
-    <mat-list dense *ngFor="let a of articles">
-        <mat-list-item> <img src="{{ a.urlToImage }}" alt=""> {{ a.publishedAt }} | {{ a.title }} - {{ a.description }} <a href="{{ a.url }}" target="_blank">Continue reading...</a></mat-list-item>
+    <h2>Roster</h2>
+    <mat-list>
+     <mat-list-item *ngFor="let p of player">
+       <img matListAvatar class="player-img" mat-card-image src="{{ p.strCutout }}" alt="{{ p.strPlayer }} cutout" alt="">
+       <p matLine>{{ p.strPlayer }} - {{ p.strPosition }}</p>
+       <p matLine>Height: {{ p.strHeight }}, Weight: {{ p.strWeight }}, DOB: {{ p.dateBorn }}, Birth Location: {{ p.strBirthLocation }} </p>
+       <p matLine align>{{ p.strDescriptionEN }}</p>
+       <mat-divider></mat-divider>
+     </mat-list-item>
     </mat-list>
 </div>
 
 <div>
-    <a class="twitter-timeline" href="https://api.twitter.com/1.1/search/tweets.json?q={team}">{{ team }} Twitter Feed</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <h3>News Feed</h3>
+    <ul>
+        <li *ngFor="let article of articles">
+            <p>{{ article?.publishedAt }}</p>
+            <p>{{ article?.title }}</p>
+            <p>{{ article?.description }}</p>
+            <a class="site" href="{{ article.url }}">Click here to read more...</a>
+        </li>
+    </ul>
 </div>
