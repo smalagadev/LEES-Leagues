@@ -7,6 +7,14 @@
     </mat-chip-list>
   </mat-card>
 
+  <mat-card *ngIf="teamName == ''" class ="tp-card">
+    <mat-card-header>
+        <mat-card-title>
+            <h2>{{teamName}}</h2>
+        </mat-card-title>
+      </mat-card-header>
+  </mat-card>
+
   <mat-card class ="tp-card">
       <mat-card-header>
           <mat-card-title>
@@ -14,7 +22,7 @@
           </mat-card-title>
       </mat-card-header>
       <mat-list role="list" *ngFor="let ue of upcomingEvents">
-        <mat-list-item role="listitem">{{ ue.dateEventLocal }} | {{ ue.strEventAlternate }}</mat-list-item>
+        <mat-list-item role="listitem">[{{ ue.dateEventLocal }} - {{ ue.strTimeLocal == null ? ue.strTime : ue.strTimeLocal }}] {{ ue.strEventAlternate }}</mat-list-item>
       </mat-list>
   </mat-card>
 
@@ -26,7 +34,9 @@
           </mat-card-title>
       </mat-card-header>
       <mat-list role="list" *ngFor="let re of recentEvents">
-        <mat-list-item role="listitem">{{ re.dateEventLocal }} - {{ re.strAwayTeam }} : {{ re.intAwayScore }} | {{ re.intHomeScore }} : {{ re.strHomeTeam }}</mat-list-item>
+        <mat-list-item role="listitem">
+          [{{ re.dateEventLocal }}] {{ re.strHomeTeam }} : {{ re.intHomeScore }} - {{ re.intAwayScore }} : {{ re.strAwayTeam }}
+        </mat-list-item>
       </mat-list>
   </mat-card>
 
@@ -35,7 +45,7 @@
                 <h2>Roster</h2>
     <mat-list>
      <mat-list-item *ngFor="let p of player">
-       <img matListAvatar class="player-img" mat-card-image src="{{ p.strCutout }}" alt="{{ p.strPlayer }} cutout" alt="">
+       <img matListAvatar class="player-img" mat-card-image src="{{ p.strCutout }}" alt="{{ p.strPlayer }}">
        <p matLine>{{ p.strPlayer }} - {{ p.strPosition }}</p>
        <p matLine>Height: {{ p.strHeight }}, Weight: {{ p.strWeight }}, DOB: {{ p.dateBorn }}, Birth Location: {{ p.strBirthLocation }} </p>
        <p matLine align>{{ p.strDescriptionEN }}</p>

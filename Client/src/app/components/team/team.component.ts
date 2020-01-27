@@ -4,6 +4,7 @@ import { TeamService } from './../../services/team.service';
 import { TwitterService } from './../../services/twitter.service';
 import { Article } from './../../models/article';
 import { Tweet } from './../../models/tweet';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,9 +18,10 @@ export class TeamComponent implements OnInit {
   upcomingEvents = [];
   tweets: Tweet[] = [];
   teams = [];
+  teamName: string = '';
   player = [];
 
-  constructor(private as: ArticlesService, private te: TeamService, private tw: TwitterService) { }
+  constructor(private as: ArticlesService, private te: TeamService, private tw: TwitterService, private router: Router) { }
 
   ngOnInit() {
     if(sessionStorage.getItem('currentUser') === null){
@@ -39,6 +41,8 @@ export class TeamComponent implements OnInit {
   }
 
   showTeam(t){
+    this.teamName = `${t.location} ${t.name}`;
+
     this.as.getByTopic(`${t.location} ${t.name}`).subscribe(
       (response: any) => {
       this.articles = response.articles;
@@ -47,13 +51,11 @@ export class TeamComponent implements OnInit {
     this.te.getTeamRecentGames(t.teamId).subscribe(
       (response: any) => {
       this.recentEvents = response.results;
-      console.log(response);
     });
 
     this.te.getTeamUpcomingGames(t.teamId).subscribe(
       (response: any) => {
       this.upcomingEvents = response.events;
-      console.log(response);
     });
 
     this.te.getTeamRoster(`${t.location} ${t.name}`).subscribe(
