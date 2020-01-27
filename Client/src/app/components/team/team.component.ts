@@ -23,22 +23,18 @@ export class TeamComponent implements OnInit {
 
   ngOnInit() {
 
-    /*this.as.getByTopic('anything').subscribe(
+    this.as.getByTopic('miami heat').subscribe(
       (response: any) => {
       this.articles = response.articles;
-    });*/
+    });
     this.te.getTeamRecentGames(this.team_api_id).subscribe(
       (response: any) => {
       this.events = response.events;
-      console.log(this.events);
-    })
+    });
     this.te.getTeamUpcomingGames(this.team_api_id).subscribe(
       (response: any) => {
       this.events = response.events;
-      /*data => {
-        this.player = data*/
-      console.log(this.events);
-    })
+    });
     this.te.getTeamRoster(this.team_name).subscribe(
         (response: any) => {
         this.player = response.player;
@@ -46,7 +42,7 @@ export class TeamComponent implements OnInit {
           this.player = data*/
           console.log(this.player);
         }
-    )
+    );
     /*this.tw.getTweetsByTeam('anything').subscribe(
       (response: any) => {
         this.tweets = response.tweets;
