@@ -1,13 +1,11 @@
 <mat-toolbar color="primary" class="navbar">
         <span class = "example-fill remaining space">
+          <a mat-stroked-button [routerLink]="'/home'">
             <img src="\assets\e413d523-be16-47bf-9199-b71673ee7c41_200x200.png" class="angular-logo">
-        </span>       
-                <a mat-stroked-button [routerLink]="'/'">Login or Register</a>
+          </a>
+        </span>
                 <a mat-stroked-button [routerLink]="'/home'"> Home </a>
-                <a mat-stroked-button [routerLink]="'/league'"> League </a>
-                <a mat-stroked-button [routerLink]="'/league_search'"> League Search </a>
                 <a mat-stroked-button [routerLink]="'/team'"> Team </a>
-                <a mat-stroked-button [routerLink]="'/team_search'"> Team Search </a>
                 <a mat-stroked-button [routerLink]="'/settings'"> Settings </a>
                 <a mat-stroked-button (click)="logout()"> Logout </a>
 </mat-toolbar>
