@@ -1,29 +1,35 @@
+  <mat-card>
+    <mat-card-title>
+        <h2>Teams</h2>
+    </mat-card-title>
+    <mat-chip-list>
+      <mat-chip color="primary" selected *ngFor="let t of teams" (click)="showTeam(t)">{{ t.location }} {{ t.name }}</mat-chip>
+    </mat-chip-list>
+  </mat-card>
 
-    <!--<h2>Recent Games</h2>
+  <mat-card class ="tp-card">
+      <mat-card-header>
+          <mat-card-title>
+              <h2>Upcoming Games</h2>
+          </mat-card-title>
+      </mat-card-header>
+      <mat-list role="list" *ngFor="let ue of upcomingEvents">
+        <mat-list-item role="listitem">{{ ue.dateEventLocal }} | {{ ue.strEventAlternate }}</mat-list-item>
+      </mat-list>
+  </mat-card>
 
-    <mat-card class ="tp-card">
-        <mat-list role="list" *ngFor="let event of events">
-          <mat-list-item role="listitem"><tr><td>{{ event.dateEventLocal }}|{{ event.strEventAlternate }}</mat-list-item>
-        </mat-list>
-    </mat-card>
 
-        <ul>
-            <li *ngFor="let event of events">
-                <p>{{ event.strEvent }}</p>
-                <p>{{ event.strHomeTeam }}</p>
-                <p>{{ event.strAwayTeam }}</p>
-                <p>{{ event.intHomeScore }}</p>
-                <p>{{ event.intAwayScore }}</p>
-                <p>{{ event.dateEvent }}</p>
-            </li>
-        </ul>-->
+  <mat-card class ="tp-card">
+      <mat-card-header>
+          <mat-card-title>
+              <h2>Recent Games</h2>
+          </mat-card-title>
+      </mat-card-header>
+      <mat-list role="list" *ngFor="let re of recentEvents">
+        <mat-list-item role="listitem">{{ re.dateEventLocal }} - {{ re.strAwayTeam }} : {{ re.intAwayScore }} | {{ re.intHomeScore }} : {{ re.strHomeTeam }}</mat-list-item>
+      </mat-list>
+  </mat-card>
 
-    <mat-card>
-                <h2>Upcoming Games</h2>
-        <mat-list role="list" *ngFor="let event of events">
-          <mat-list-item role="listitem"><tr><td>{{ event.dateEventLocal }}|{{ event.strEventAlternate }}</mat-list-item>
-        </mat-list>
-    </mat-card>
 
     <mat-card>
                 <h2>Roster</h2>

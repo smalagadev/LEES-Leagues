@@ -13,44 +13,52 @@ import { Tweet } from './../../models/tweet';
 })
 export class TeamComponent implements OnInit {
   articles = [];
-  events = [];
+  recentEvents = [];
+  upcomingEvents = [];
   tweets: Tweet[] = [];
-  team_api_id = 134882;
-  team_name = 'miami heat';
+  teams = [];
   player = [];
 
   constructor(private as: ArticlesService, private te: TeamService, private tw: TwitterService) { }
 
   ngOnInit() {
 
-    this.as.getByTopic('miami heat').subscribe(
-      (response: any) => {
-      this.articles = response.articles;
-    });
-    this.te.getTeamRecentGames(this.team_api_id).subscribe(
-      (response: any) => {
-      this.events = response.events;
-    });
-    this.te.getTeamUpcomingGames(this.team_api_id).subscribe(
-      (response: any) => {
-      this.events = response.events;
-    });
 
-    this.te.getTeamRoster(this.team_name).subscribe(
-        (response: any) => {
-        this.player = response.player;
-        /*data => {
-          this.player = data*/
-          console.log(this.player);
-        }
-    );
-    
     /*this.tw.getTweetsByTeam('anything').subscribe(
       (response: any) => {
         this.tweets = response.tweets;
       }
     )*/
+
+    this.te.getAllTeams().subscribe(
+      (response: any) =>{
+          this.teams = response;
+    });
   }
 
+  showTeam(t){
+    this.as.getByTopic(`${t.location} ${t.name}`).subscribe(
+      (response: any) => {
+      this.articles = response.articles;
+    });
+
+    this.te.getTeamRecentGames(t.teamId).subscribe(
+      (response: any) => {
+      this.recentEvents = response.results;
+      console.log(response);
+    });
+
+    this.te.getTeamUpcomingGames(t.teamId).subscribe(
+      (response: any) => {
+      this.upcomingEvents = response.events;
+      console.log(response);
+    });
+
+    this.te.getTeamRoster(`${t.location} ${t.name}`).subscribe(
+        (response: any) => {
+        this.player = response.player;
+        }
+    );
+  }
   //panelOpenState = true;
 }

@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class TeamService {
-  baseUrl: string = "http://localhost:8080/LEES-Leagues";
+  baseUrl: string = "https://localhost:8080/LEES-Leagues";
   news_api_key: string = environment.news_api_key;
 
   constructor(private http: HttpClient) { }
@@ -50,5 +50,9 @@ export class TeamService {
   // Include id as a parameter and plug parameter into url
   getGameSchedules(){
     return this.http.get(`https://www.thesportsdb.com/api/v1/json/1/eventsnextleague.php?id=4387`);
+  }
+
+  getAllTeams(){
+    return this.http.get(`http://localhost:8080/LEES-Leagues/teams`);
   }
 }

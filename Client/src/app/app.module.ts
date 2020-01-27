@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, FormControl, FormGroup } from '@angular/forms';
 import { MatTabsModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
-
+import {MatChipsModule} from '@angular/material/chips';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 
@@ -58,7 +58,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
-
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

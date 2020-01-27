@@ -36,7 +36,6 @@ export class GameSchedulesComponent implements OnInit {
       .subscribe((response : any) => {
         this.gameSchedule = response.events;
         // this.dataSource = new MatTableDataSource<GameSchedulesService>(response);
-        console.log(this.gameSchedule);
         this.gameSchedule.paginator = this.paginator;
         this.array = this.gameSchedule;
         this.totalSize = this.array.length;
