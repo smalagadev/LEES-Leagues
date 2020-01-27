@@ -10,13 +10,7 @@ import { PageEvent, MatTableDataSource } from '@angular/material';
 export class GameSchedulesComponent implements OnInit {
   gameSchedule: any = [];
   columnsToDisplay = ['date-time', 'eventName'];
-<<<<<<< HEAD
-
-  // dataSource = new MatTableDataSource<GameSchedulesService>(this.gameSchedule)
-=======
-  
   dataSource = new MatTableDataSource<GameSchedulesService>(this.gameSchedule)
->>>>>>> b77531a0a831d610e9b78acc094acf087ccfd8ca
 
   public pageSize = 5;
   public currentPage = 0;
