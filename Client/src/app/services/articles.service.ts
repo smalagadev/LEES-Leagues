@@ -18,6 +18,6 @@ export class ArticlesService {
   }
 
   getByTopic(topic: string){
-    return this.http.get(`https://newsapi.org/v2/everything?q=${topic}&category=sports&apiKey=${this.api_key}`);
+    return this.http.get(`https://newsapi.org/v2/everything?q=${topic}&apiKey=${this.api_key}`);
   }
 }

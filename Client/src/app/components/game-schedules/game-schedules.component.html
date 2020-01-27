@@ -1,9 +1,9 @@
-
+<mat-card class ="tp-card">
 <mat-list role="list" *ngFor="let g of gameSchedule">
-  <mat-list-item role="listitem">{{ g.dateEventLocal }} | {{ g.strTimeLocal }} - {{ g.strEventAlternate }}</mat-list-item>
+  <mat-list-item role="listitem"><tr><td>{{ g.dateEventLocal }}|{{ g.strTimeLocal }}|{{ g.strEventAlternate }}</mat-list-item>
 </mat-list>
 
-
+<mat-card-actions>
 <mat-paginator #paginator [pageSize]="pageSize" 
                           [pageSizeOptions]="[5]" 
                           [showFirstLastButtons]="true" 
@@ -11,5 +11,5 @@
                           [pageIndex]="currentPage" 
                           (page)="pageEvent = handlePage($event)">
 </mat-paginator>
-
-
+</mat-card-actions>
+</mat-card>
