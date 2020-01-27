@@ -11,4 +11,8 @@
 }
 span{
   padding-right: 1rem;
+  justify-content: right;
 }
+/* .example-fill remaining space{
+  justify-content: right;
+} */
