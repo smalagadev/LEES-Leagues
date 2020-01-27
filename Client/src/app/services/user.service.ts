@@ -14,7 +14,6 @@ export class UserService {
       username : username,
       password : password
     };
-    console.log(body);
     return this.http.post<User>('http://localhost:8080/LEES-Leagues/users/login', body);
   }
 
