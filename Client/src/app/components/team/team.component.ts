@@ -22,7 +22,9 @@ export class TeamComponent implements OnInit {
   constructor(private as: ArticlesService, private te: TeamService, private tw: TwitterService) { }
 
   ngOnInit() {
-
+    if(sessionStorage.getItem('currentUser') === null){
+      this.router.navigate(['/']);
+    }
 
     /*this.tw.getTweetsByTeam('anything').subscribe(
       (response: any) => {
