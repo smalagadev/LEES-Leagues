@@ -17,7 +17,7 @@ export class GameSchedulesComponent implements OnInit {
   public currentPage = 0;
   public totalSize = 0;
   app: any;
-  paginator: any = [];
+  paginator = [];
   array: any = [];
 
   constructor(private gss: GameSchedulesService) { }
